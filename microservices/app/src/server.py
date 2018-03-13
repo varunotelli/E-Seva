@@ -50,7 +50,7 @@ def getfile():
 		pdf.write_html(html)
 		pdf.output(os.getcwd()+'/'+uid+'.pdf', 'F')
 		print(os.listdir(os.getcwd()))
-		return send_file(os.getcwd()+'/'+uid+'.pdf',attachment_filename=uid+'.pdf')
+		return send_file(os.getcwd()+'/'+uid+'.pdf',attachment_filename=uid+'.pdf',as_attachment=True)
 	return render_template("form.htm")
 
 

@@ -2,42 +2,79 @@ from flask import Flask,send_file,request,render_template
 #from pdf import create
 from fpdf import FPDF,HTMLMixin
 import os
+import xml.etree.ElementTree as ET
 class MyFPDF(FPDF, HTMLMixin):
     pass
 
 
 app=Flask(__name__)
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+
 
 @app.route("/")
 def index():
-	return "hello world"
+    return render_template("upload.html")
 
-@app.route("/getfile",methods=["GET","POST"])
+@app.route("/upload", methods=['POST'])
+def upload():
+    target = os.path.join(APP_ROOT, 'file/')
+    print(target)
+
+    if not os.path.isdir(target):
+        os.mkdir(target)
+
+    for file in request.files.getlist("file"):
+        print(file)
+        filename = file.filename
+        destination = "/".join([target, filename])
+        print(destination)
+        contents = file.read()
+        value = contents.decode(encoding='UTF-8')
+        root = ET.fromstring(value)
+        print(root.attrib)
+        print(value)
+
+    return render_template("complete.html",data = root.attrib)
+
+@app.route("/getfile",methods=["POST"])
 def getfile():
 	#return "hi"
 
 	if request.method=="POST":
 		uid=request.form["uid"]
+		name=request.form["name"]
+		gender=request.form["gender"]
+		yob=request.form["yob"]
+		co=request.form["co"]
+		loc=request.form["loc"]
+		lm=request.form["lm"]
+		vtc=request.form["vtc"]
+		po=request.form["po"]
+		dist=request.form["dist"]
+		state=request.form["state"]
+		pc=request.form["pc"]
+		mobile=request.form["mobile"]
+		inc=request.form["inc"]
+
 		print("uid="+uid)
 		html="""
 <body>
-	<form id="form" method="POST" action="">UID <input type="text" id="uid" class="fele">&nbsp;&nbsp;"""+uid+"""<br><br>
-		Name <input type="text" id="name" class="fele"><br><br>
-		Gender <input type="text" id="gender" class="fele"><br><br>
-		YOB <input type="text" id="yob" class="fele"><br><br>
-		CO <input type="text" id="co" class="fele"><br><br>
-		House <input type="text" id="house" class="fele"><br><br>
-		Street <input type="text" id="street" class="fele"><br><br>
-		LM <input type="text" id="lm" class="fele"><br><br>
-		VTC <input type="text" id="vtc" class="fele"><br><br>
-		PO <input type="text" id="po" class="fele"><br><br>
-		Dist <input type="text" id="dist" class="fele"><br><br>
-		Subdist <input type="text" id="subdist" class="fele"><br><br>
-		State <input type="text" id="state" class="fele"><br><br>
-		PC <input type="text" id="pc" class="fele"><br><br>
-		DOB <input type="text" id="dob" class="fele"><br><br>
-		Mobile Number <input type="text" id="mobile" class="fele"><br><br>
-		
+	<form id="input-form" action="/getfile" method="POST" enctype="multipart/form-data">UID <input type="text" name="uid">&nbsp;&nbsp;&nbsp;&nbsp;"""+uid+"""<br><br>
+	    Name <input type="text" name="name">&nbsp;&nbsp;&nbsp;&nbsp;"""+name+"""<br><br>
+	    Gender <input type="text" name="gender">&nbsp;&nbsp;&nbsp;&nbsp;"""+gender+"""<br><br>
+	    YOB <input type="text" name="yob">&nbsp;&nbsp;&nbsp;&nbsp;"""+yob+"""<br><br>
+	    CO <input type="text" name="co">&nbsp;&nbsp;&nbsp;&nbsp;"""+co+"""<br><br>
+	    LM <input type="text" name="lm">&nbsp;&nbsp;&nbsp;&nbsp;"""+loc+"""<br><br>
+	    LOC <input type="text" name="loc">&nbsp;&nbsp;&nbsp;&nbsp;"""+lm+"""<br><br>
+	    VTC <input type="text" name="vtc">&nbsp;&nbsp;&nbsp;&nbsp;"""+vtc+"""<br><br>
+	    PO <input type="text" name="po">&nbsp;&nbsp;&nbsp;&nbsp;"""+po+"""<br><br>
+	    DIST <input type="text" name="dist">&nbsp;&nbsp;&nbsp;&nbsp;"""+dist+"""<br><br>
+	    State <input type="text" name="state">&nbsp;&nbsp;&nbsp;&nbsp;"""+state+"""<br><br>
+	    PC <input type="text" name="pc">&nbsp;&nbsp;&nbsp;&nbsp;"""+pc+"""<br><br>
+	    Income <input type="text" name="inc">&nbsp;&nbsp;&nbsp;&nbsp;"""+mobile+"""<br><br>
+	    Mobile <input type="text" name="mobile">&nbsp;&nbsp;&nbsp;&nbsp;"""+inc+"""<br><br>
+
+	    
 	</form>
 			
 </body>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+	<div id ="data"></div>
+	<form id="input-form" action="/getfile" method="POST" enctype="multipart/form-data">
+	    UID <input type="text" name="uid" value="{{data['uid']}}"><br><br>
+	    Name <input type="text" name="name" value="{{data['name']}}"><br><br>
+	    Gender <input type="text" name="gender" value="{{data['gender']}}"><br><br>
+	    YOB <input type="text" name="yob" value="{{data['yob']}}"><br><br>
+	    CO <input type="text" name="co" value="{{data['co']}}"><br><br>
+	    LM <input type="text" name="lm" value="{{data['lm']}}"><br><br>
+	    LOC <input type="text" name="loc" value="{{data['loc']}}"><br><br>
+	    VTC <input type="text" name="vtc" value="{{data['vtc']}}"><br><br>
+	    PO <input type="text" name="po" value="{{data['po']}}"><br><br>
+	    DIST <input type="text" name="dist" value="{{data['dist']}}"><br><br>
+	    State <input type="text" name="state" value="{{data['state']}}"><br><br>
+	    PC <input type="text" name="pc" value="{{data['pc']}}"><br><br>
+	    Income <input type="text" name="inc" value=""><br><br>
+	    Mobile <input type="text" name="mobile" value=""><br><br>
+
+	    <input type="submit">
+	</form>
+</body>
+</html>

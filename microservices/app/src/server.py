@@ -2,6 +2,7 @@ from flask import Flask,send_file,request,render_template
 #from pdf import create
 from fpdf import FPDF,HTMLMixin
 import os
+from json import dump
 import xml.etree.ElementTree as ET
 class MyFPDF(FPDF, HTMLMixin):
     pass
@@ -87,6 +88,8 @@ def getfile():
 		pdf.write_html(html)
 		pdf.output(os.getcwd()+'/'+uid+'.pdf', 'F')
 		print(os.listdir(os.getcwd()))
+		with open('values.json', "a") as f:
+			dump(request.form, f)
 		return send_file(os.getcwd()+'/'+uid+'.pdf',attachment_filename=uid+'.pdf',as_attachment=True)
 	return render_template("form.htm")
 

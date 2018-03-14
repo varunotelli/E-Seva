@@ -2,27 +2,123 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-	<div id ="data"></div>
-	<form id="input-form" action="/getfile" method="POST" enctype="multipart/form-data">
-	    UID <input type="text" name="uid" value="{{data['uid']}}"><br><br>
-	    Name <input type="text" name="name" value="{{data['name']}}"><br><br>
-	    Gender <input type="text" name="gender" value="{{data['gender']}}"><br><br>
-	    YOB <input type="text" name="yob" value="{{data['yob']}}"><br><br>
-	    CO <input type="text" name="co" value="{{data['co']}}"><br><br>
-	    LM <input type="text" name="lm" value="{{data['lm']}}"><br><br>
-	    LOC <input type="text" name="loc" value="{{data['loc']}}"><br><br>
-	    VTC <input type="text" name="vtc" value="{{data['vtc']}}"><br><br>
-	    PO <input type="text" name="po" value="{{data['po']}}"><br><br>
-	    DIST <input type="text" name="dist" value="{{data['dist']}}"><br><br>
-	    State <input type="text" name="state" value="{{data['state']}}"><br><br>
-	    PC <input type="text" name="pc" value="{{data['pc']}}"><br><br>
-	    Income <input type="text" name="inc" value=""><br><br>
-	    Mobile <input type="text" name="mobile" value=""><br><br>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Avoidance of duplication of beneficiaries - Upload Details</title>
 
-	    <input type="submit">
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/complete.css') }}">
+
+</head>
+
+<body class="container">
+	<div id="main">
+		<div class="page-header">
+  		<h1><b>Aadhar Card Details</b></h1>
+	</div>
+	<div id ="data">
+	<form id="input-form" action="/getfile" method="POST" enctype="multipart/form-data" class="form-horizontal">
+		<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label class="control-label col-sm-4">UID : </label>
+				<div class="col-sm-8">
+					<input type="text" name="uid" value="{{data['uid']}}" readonly class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-4">Name : </label>
+				<div class="col-sm-8">
+					<input type="text" name="name" value="{{data['name']}}" readonly class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-4">Gender: </label>
+				<div class="col-sm-8">
+					<input type="text" name="gender" value="{{data['gender']}}" readonly class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-4">Year of Birth :</label>
+				<div class="col-sm-8">
+					<input type="text" name="yob" value="{{data['yob']}}" readonly class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-4">Care of : </label>
+				<div class="col-sm-8">
+					<input type="text" name="co" value="{{data['co']}}" readonly class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-4">House : </label>
+				<div class="col-sm-8">
+					<input type="text" name="lm" value="{{data['lm']}}" readonly class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-4">Landmark : </label>
+				<div class="col-sm-8">
+					<input type="text" name="loc" value="{{data['loc']}}" readonly class="form-control">
+				</div>
+			</div>
+	    </div>
+	    <div class="col-sm-6">
+			<div class="form-group">
+				<label class="control-label col-sm-4">Village/Town/City : </label>
+				<div class="col-sm-8">
+					<input type="text" name="vtc" value="{{data['vtc']}}" readonly class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-4">Post Office Name : </label>
+				<div class="col-sm-8">
+					<input type="text" name="po" value="{{data['po']}}" readonly class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-4">District : </label>
+				<div class="col-sm-8">
+					<input type="text" name="dist" value="{{data['dist']}}" readonly class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-4">State : </label>
+				<div class="col-sm-8">
+					 <input type="text" name="state" value="{{data['state']}}" readonly class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-4">Pincode : </label>
+				<div class="col-sm-8">
+					<input type="text" name="pc" value="{{data['pc']}}" readonly class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-4">Income : </label>
+				<div class="col-sm-8">
+					<input type="text" name="inc" value="" type="number" placeholder="Enter your income" required  class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-4">Phone Number : </label>
+				<div class="col-sm-8">
+					<input type="text" name="mobile" value="" type="number" placeholder="Enter your phone number" required class="form-control">
+				</div>
+			</div>
+	    </div>
+	    </div>
+	    <input type="submit" class="btn btn-primary btn-block btn-lg">
 	</form>
+	</div>
+		
+	</div>
+	
 </body>
 </html>

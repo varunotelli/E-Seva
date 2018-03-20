@@ -90,6 +90,7 @@ def getfile():
 		print(os.listdir(os.getcwd()))
 		with open('values.json', "a") as f:
 			dump(request.form, f)
+			f.write("\n")
 		return send_file(os.getcwd()+'/'+uid+'.pdf',attachment_filename=uid+'.pdf',as_attachment=True)
 	return render_template("form.htm")
 

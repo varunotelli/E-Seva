@@ -1,7 +1,0 @@
-- alias: hasura
-  config:
-    configmap: controller-conf
-    namespace: contrivance17-hasura
-  data: null
-  kubeContext: contrivance17
-  name: contrivance17

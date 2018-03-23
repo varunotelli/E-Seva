@@ -1,0 +1,35 @@
+body 
+{
+  font-family: 'Cinzel', serif;
+  background-color: #f5f5f5;
+}
+.head
+{
+  display: flex;
+  justify-content: center;
+
+}
+img
+{
+  height: 475px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+

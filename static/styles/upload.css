@@ -32,8 +32,6 @@ body{
   font-size: 16px;
 }
 
-
-
 .choose
 {
   margin-bottom: -1px;
@@ -53,4 +51,9 @@ body{
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.form-signin input[readonly]
+{
+  background-color: white;
 }

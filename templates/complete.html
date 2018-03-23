@@ -13,112 +13,162 @@
 
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/complete.css') }}">
-
 </head>
-
-<body class="container">
-	<div id="main">
-		<div class="page-header">
-  		<h1><b>Aadhar Card Details</b></h1>
-	</div>
-	<div id ="data">
-	<form id="input-form" action="/getfile" method="POST" enctype="multipart/form-data" class="form-horizontal">
+<body class="container-fluid">
+	<div class="page-header row head">
+     	<h1><b>Government of Gujarat </b>- Avoidance of duplication of beneficiaries</h1>
+     </div>
+	<form id="input-form" action="/getfile" method="POST" enctype="multipart/form-data" class="form-horizontal form-signin">
 		<div class="row">
-		<div class="col-sm-6">
-			<div class="form-group">
-				<label class="control-label col-sm-4">UID : </label>
-				<div class="col-sm-8">
-					<input type="text" name="uid" value="{{data['uid']}}" readonly class="form-control">
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-4">Name : </label>
-				<div class="col-sm-8">
-					<input type="text" name="name" value="{{data['name']}}" readonly class="form-control">
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-4">Gender: </label>
-				<div class="col-sm-8">
-					<input type="text" name="gender" value="{{data['gender']}}" readonly class="form-control">
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-4">Year of Birth :</label>
-				<div class="col-sm-8">
-					<input type="text" name="yob" value="{{data['yob']}}" readonly class="form-control">
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-4">Care of : </label>
-				<div class="col-sm-8">
-					<input type="text" name="co" value="{{data['co']}}" readonly class="form-control">
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-4">House : </label>
-				<div class="col-sm-8">
-					<input type="text" name="lm" value="{{data['lm']}}" readonly class="form-control">
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-4">Landmark : </label>
-				<div class="col-sm-8">
-					<input type="text" name="loc" value="{{data['loc']}}" readonly class="form-control">
-				</div>
-			</div>
-	    </div>
-	    <div class="col-sm-6">
-			<div class="form-group">
-				<label class="control-label col-sm-4">Village/Town/City : </label>
-				<div class="col-sm-8">
-					<input type="text" name="vtc" value="{{data['vtc']}}" readonly class="form-control">
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-4">Post Office Name : </label>
-				<div class="col-sm-8">
-					<input type="text" name="po" value="{{data['po']}}" readonly class="form-control">
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-4">District : </label>
-				<div class="col-sm-8">
-					<input type="text" name="dist" value="{{data['dist']}}" readonly class="form-control">
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-4">State : </label>
-				<div class="col-sm-8">
-					 <input type="text" name="state" value="{{data['state']}}" readonly class="form-control">
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-4">Pincode : </label>
-				<div class="col-sm-8">
-					<input type="text" name="pc" value="{{data['pc']}}" readonly class="form-control">
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-4">Income : </label>
-				<div class="col-sm-8">
-					<input type="text" name="inc" value="" type="number" placeholder="Enter your income" required  class="form-control">
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-4">Phone Number : </label>
-				<div class="col-sm-8">
-					<input type="text" name="mobile" value="" type="number" placeholder="Enter your phone number" required class="form-control">
-				</div>
-			</div>
-	    </div>
-	    </div>
-	    <input type="submit" class="btn btn-primary btn-block btn-lg">
+		<div class="col-sm-3">
+            <img src="/static/img/GujaratEmblem.png">
+        </div>
+        <div class="col-sm-9">
+        	<div class="row">
+        		<div class="col-sm-5"></div>
+        		<div class="col-sm-4">
+        			<h1 class="h3 mb-2 font-weight-normal"><b>Aadhar Card Details</b></h1>
+        		</div>
+        		<div class="col-sm-3"></div>
+        	</div>
+        	<div class="row">
+        		<div class="col-sm-6">
+        			<div class="form-group">
+						<label class="control-label col-sm-5">UID : </label>
+						<div class="col-sm-7">
+							<input type="text" name="uid" value="{{data['uid']}}" readonly class="form-control">
+						</div>
+					</div>
+        		</div>
+        		<div class="col-sm-6">
+        			<div class="form-group">
+						<label class="control-label col-sm-5">Village/Town/City : </label>
+						<div class="col-sm-7">
+							<input type="text" name="vtc" value="{{data['vtc']}}" readonly class="form-control">
+						</div>
+					</div>
+        		</div>
+        	</div>
+        	<div class="row">
+        		<div class="col-sm-6">
+        			<div class="form-group">
+						<label class="control-label col-sm-5">Name : </label>
+						<div class="col-sm-7">
+							<input type="text" name="name" value="{{data['name']}}" readonly class="form-control">
+						</div>
+					</div>
+        		</div>
+        		<div class="col-sm-6">
+        			<div class="form-group">
+						<label class="control-label col-sm-5">Post Office Name : </label>
+						<div class="col-sm-7">
+							<input type="text" name="po" value="{{data['po']}}" readonly class="form-control">
+						</div>
+					</div>
+        		</div>
+        	</div>
+        	<div class="row">
+        		<div class="col-sm-6">
+        			<div class="form-group">
+						<label class="control-label col-sm-5">Gender: </label>
+						<div class="col-sm-7">
+							<input type="text" name="gender" value="{{data['gender']}}" readonly class="form-control">
+						</div>
+					</div>
+        		</div>
+        		<div class="col-sm-6">
+        			<div class="form-group">
+						<label class="control-label col-sm-5">District : </label>
+						<div class="col-sm-7">
+							<input type="text" name="dist" value="{{data['dist']}}" readonly class="form-control">
+						</div>
+					</div>
+        		</div>
+        	</div>
+        	<div class="row">
+        		<div class="col-sm-6">
+        			<div class="form-group">
+						<label class="control-label col-sm-5">Year of Birth :</label>
+						<div class="col-sm-7">
+							<input type="text" name="yob" value="{{data['yob']}}" readonly class="form-control">
+						</div>
+					</div>
+        		</div>
+        		<div class="col-sm-6">
+        			<div class="form-group">
+						<label class="control-label col-sm-5">State : </label>
+						<div class="col-sm-7">
+							 <input type="text" name="state" value="{{data['state']}}" readonly class="form-control">
+						</div>
+					</div>
+        		</div>
+        	</div>
+        	<div class="row">
+        		<div class="col-sm-6">
+        			<div class="form-group">
+						<label class="control-label col-sm-5">Care of : </label>
+						<div class="col-sm-7">
+							<input type="text" name="co" value="{{data['co']}}" readonly class="form-control">
+						</div>
+					</div> 
+
+        		</div>
+        		<div class="col-sm-6">
+        			<div class="form-group">
+						<label class="control-label col-sm-5">Pincode : </label>
+						<div class="col-sm-7">
+							<input type="text" name="pc" value="{{data['pc']}}" readonly class="form-control">
+						</div>
+					</div>
+        		</div>
+        	</div>
+        	<div class="row">
+        		<div class="col-sm-6">
+        			<div class="form-group">
+						<label class="control-label col-sm-5">House : </label>
+						<div class="col-sm-7">
+							<input type="text" name="lm" value="{{data['lm']}}" readonly class="form-control">
+						</div>
+					</div>        			
+        		</div>
+        		<div class="col-sm-6">
+        			<div class="form-group">
+						<label class="control-label col-sm-5">Income : </label>
+						<div class="col-sm-7">
+							<input type="text" name="inc" value="" type="number" placeholder="Enter your income" required  class="form-control">
+						</div>
+					</div>
+        		</div>
+        	</div>
+        	<div class="row">
+        		<div class="col-sm-6">
+        			<div class="form-group">
+						<label class="control-label col-sm-5">Landmark : </label>
+						<div class="col-sm-7">
+							<input type="text" name="loc" value="{{data['loc']}}" readonly class="form-control">
+						</div>
+					</div>
+        		</div>
+        		<div class="col-sm-6">
+        			<div class="form-group">
+						<label class="control-label col-sm-5">Phone Number : </label>
+						<div class="col-sm-7">
+							<input type="text" name="mobile" value="" type="number" placeholder="Enter your phone number" required class="form-control">
+						</div>
+					</div>
+        		</div>
+        	</div>
+        	<br>
+        	<div class="row">
+        		<div class="col-sm-3"></div>
+        		<div class="col-sm-6">
+        			<input type="submit" class="btn btn-primary btn-block btn-lg">
+        		</div>
+        		<div class="col-sm-3"></div>
+        	</div>
+        </div> 
 	</form>
-	</div>
-		
-	</div>
-	
 </body>
 </html>

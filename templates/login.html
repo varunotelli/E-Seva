@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Avoidance of duplication of beneficiaries - Login</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/login.css') }}">
+</head>
+<body class="container-fluid">
+	<div class="page-header row head">
+     <h1><b>Government of Gujarat </b>- Avoidance of duplication of beneficiaries</h1>
+     </div>
+     <div class="row">
+     	<div class="col-sm-4">
+     		<img src="/static/img/GujaratEmblem.png">
+     	</div>
+     	<div class="col-sm-3">
+     		<form class="form-signin">
+			<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+			<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+			<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+			<div class="checkbox mb-3">
+				<label><input type="checkbox" value="remember-me"> Remember me</label>
+			</div>
+			<button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+		</form>
+     	</div>
+     	<div class="col-sm-4">
+     		<img src="/static/img/GujaratMap.png">
+     	</div>
+     </div>
+</body>
+</html>

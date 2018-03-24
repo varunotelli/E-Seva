@@ -61,46 +61,100 @@ def getfile():
 
 		html = """
 		<!DOCTYPE html>
-<html lang="en">
-<body>
-  <form id="input-form" action="/getfile" method="POST" enctype="multipart/form-data">
-
-  <img src="logo-gov.png" alt="logo-gov" width="72" height="72"/>
-  <p align="right"><b>Ministry of Social Justice and Empowerment</b></p>
-
-  <br><hr><h3 align="center">Aadhaar Details</h3><br>
-    <b>UID</b>&nbsp;&nbsp;&nbsp;&nbsp;"""+uid+"""
-    <br><br>
-    <b>Name</b> <input type="text" name="name">&nbsp;&nbsp;&nbsp;&nbsp;"""+name+"""
-    <br><br>
-    <b>Gender</b> <input type="text" name="gender">&nbsp;&nbsp;&nbsp;&nbsp;"""+gender+"""
-    <br><br>
-    <b>YOB</b> <input type="text" name="yob">&nbsp;&nbsp;&nbsp;&nbsp;"""+yob+"""
-    <br><br>
-    <b>CO</b> <input type="text" name="co">&nbsp;&nbsp;&nbsp;&nbsp;"""+co+"""
-    <br><br>
-    <b>LM</b> <input type="text" name="lm">&nbsp;&nbsp;&nbsp;&nbsp;"""+lm+"""
-    <br><br>
-    <b>LOC</b> <input type="text" name="loc">&nbsp;&nbsp;&nbsp;&nbsp;"""+loc+"""
-    <br><br>
-    <b>VTC</b> <input type="text" name="vtc">&nbsp;&nbsp;&nbsp;&nbsp;"""+vtc+"""
-    <br><br>
-    <b>PO</b> <input type="text" name="po">&nbsp;&nbsp;&nbsp;&nbsp;"""+po+"""
-    <br><br>
-    <b>DIST</b> <input type="text" name="dist">&nbsp;&nbsp;&nbsp;&nbsp;"""+dist+"""
-    <br><br>
-    <b>State</b> <input type="text" name="state">&nbsp;&nbsp;&nbsp;&nbsp;"""+state+"""
-    <br><br>
-    <b>PC</b> <input type="text" name="pc">&nbsp;&nbsp;&nbsp;&nbsp;"""+pc+"""
-    <br><br>
-    <b>Income</b> <input type="text" name="inc">&nbsp;&nbsp;&nbsp;&nbsp;"""+mobile+"""
-    <br><br>
-    <b>Mobile</b> <input type="text" name="mobile">&nbsp;&nbsp;&nbsp;&nbsp;"""+inc+"""
-    <br><br>     
-  </form> 
-</body>
-</html>
-		
+		<html lang="en">
+		<body>
+  			<center>
+  			<img align="center" src="logo-gov.png" alt="logo-gov" width="72" height="72"/></center>
+  			<h2 align="center"><b>MINISTRY OF SOCIAL JUSTICE AND EMPOWERMENT</b></h2>
+ 			<br><hr><h2 align="center"><b>AADHAR DETAILS</b></h2><br>
+ 			<table align="center" border="0" width="70%">
+ 			 	<tr>
+ 			 		<td width="10%"></td>
+ 			 		<td width="40%"><b>UID : </b></td>
+ 			 		<td width="50%" align="right">"""+uid+"""</td>
+ 			 	</tr>
+ 			 	<br>
+ 			 	<tr>
+ 			 		<td width="10%"></td>
+ 			 		<td width="40%"><b>Name : </b></td>
+ 			 		<td width="50%" align="right">"""+name+"""</td>
+ 			 	</tr>
+ 			 	<br>
+ 			 	<tr>
+ 			 		<td width="10%"></td>
+ 			 		<td width="40%"><b>Gender : </b></td>
+ 			 		<td width="50%" align="right">"""+gender+"""</td>
+ 			 	</tr>
+ 			 	<br>
+ 			 	<tr>
+ 			 		<td width="10%"></td>
+ 			 		<td width="40%"><b>Year of Birth : </b></td>
+ 			 		<td width="50%" align="right">"""+yob+"""</td>
+ 			 	</tr>
+ 			 	<br>
+ 			 	<tr>
+ 			 		<td width="10%"></td>
+ 			 		<td width="40%"><b>Care of : </b></td>
+ 			 		<td width="50%" align="right">"""+co+"""</td>
+ 			 	</tr>
+ 			 	<br>
+ 			 	<tr>
+ 			 		<td width="10%"></td>
+ 			 		<td width="40%"><b>House : </b></td>
+ 			 		<td width="50%" align="right">"""+lm+"""</td>
+ 			 	</tr>
+ 			 	<br>
+ 			 	<tr>
+ 			 		<td width="10%"></td>
+ 			 		<td width="40%"><b>Landmark : </b></td>
+ 			 		<td width="50%" align="right">"""+loc+"""</td>
+ 			 	</tr>
+ 			 	<br>
+ 			 	<tr>
+ 			 		<td width="10%"></td>
+ 			 		<td width="40%"><b>Village/Town/City : </b></td>
+ 			 		<td width="50%" align="right">"""+vtc+"""</td>
+ 			 	</tr>
+ 			 	<br>
+ 			 	<tr>
+ 			 		<td width="10%"></td>
+ 			 		<td width="40%"><b>Post Office Name : </b></td>
+ 			 		<td width="50%" align="right">"""+po+"""</td>
+ 			 	</tr>
+ 			 	<br>
+ 			 	<tr>
+ 			 		<td width="10%"></td>
+ 			 		<td width="40%"><b>District : </b></td>
+ 			 		<td width="50%" align="right">"""+dist+"""</td>
+ 			 	</tr>
+ 			 	<br>
+ 			 	<tr>
+ 			 		<td width="10%"></td>
+ 			 		<td width="40%"><b>State : </b></td>
+ 			 		<td width="50%" align="right">"""+state+"""</td>
+ 			 	</tr>
+ 			 	<br>
+ 			 	<tr>
+ 			 		<td width="10%"></td>
+ 			 		<td width="40%"><b>Pincode : </b></td>
+ 			 		<td width="50%" align="right">"""+pc+"""</td>
+ 			 	</tr>
+ 			 	<br>
+ 			 	<tr>
+ 			 		<td width="10%"></td>
+ 			 		<td width="40%"><b>Income : </b></td>
+ 			 		<td width="50%" align="right">"""+inc+"""</td>
+ 			 	</tr>
+ 			 	<br>
+ 			 	<tr>
+ 			 		<td width="10%"></td>
+ 			 		<td width="40%"><b>Phone Number : </b></td>
+ 			 		<td width="50%" align="right">"""+mobile+"""</td>
+ 			 	</tr>
+ 			 	<br>
+ 			 </table>
+		</body>
+	</html>
 		"""		
 	
 		pdf = MyFPDF()

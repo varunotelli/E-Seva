@@ -16,26 +16,28 @@ APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 def index():
     return render_template("upload.html")
 
-@app.route("/upload", methods=['POST'])
+@app.route("/upload", methods=['GET','POST'])
 def upload():
-    target = os.path.join(APP_ROOT, 'file/')
-    print(target)
+	if request.method=='POST':
+	    target = os.path.join(APP_ROOT, 'file/')
+	    print(target)
 
-    if not os.path.isdir(target):
-        os.mkdir(target)
+	    if not os.path.isdir(target):
+	        os.mkdir(target)
 
-    for file in request.files.getlist("file"):
-        print(file)
-        filename = file.filename
-        destination = "/".join([target, filename])
-        print(destination)
-        contents = file.read()
-        value = contents.decode(encoding='UTF-8')
-        root = ET.fromstring(value)
-        print(root.attrib)
-        print(value)
+	    for file in request.files.getlist("file"):
+	        print(file)
+	        filename = file.filename
+	        destination = "/".join([target, filename])
+	        print(destination)
+	        contents = file.read()
+	        value = contents.decode(encoding='UTF-8')
+	        root = ET.fromstring(value)
+	        print(root.attrib)
+	        print(value)
 
-    return render_template("complete.html",data = root.attrib)
+	    return render_template("complete.html",data = root.attrib)
+	return render_template("complete.html",data="")
 
 @app.route("/getfile",methods=["POST"])
 def getfile():

@@ -93,9 +93,9 @@ def getfile():
     <br><br>
     <b>PC</b> <input type="text" name="pc">&nbsp;&nbsp;&nbsp;&nbsp;"""+pc+"""
     <br><br>
-    <b>Income</b> <input type="text" name="inc">&nbsp;&nbsp;&nbsp;&nbsp;"""+mobile+"""
+    <b>Income</b> <input type="text" name="inc">&nbsp;&nbsp;&nbsp;&nbsp;"""+inc+"""
     <br><br>
-    <b>Mobile</b> <input type="text" name="mobile">&nbsp;&nbsp;&nbsp;&nbsp;"""+inc+"""
+    <b>Mobile</b> <input type="text" name="mobile">&nbsp;&nbsp;&nbsp;&nbsp;"""+mobile+"""
     <br><br>     
   </form> 
 </body>

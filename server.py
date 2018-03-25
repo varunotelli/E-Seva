@@ -4,6 +4,7 @@ from fpdf import FPDF,HTMLMixin
 import os
 from json import dump
 import xml.etree.ElementTree as ET
+from db_checker import check
 visible="readonly"
 class MyFPDF(FPDF, HTMLMixin):
 	pass
@@ -24,7 +25,9 @@ def index():
 				return redirect(url_for('card'))
 			else:
 				flash('Wrong password!')
+				return "Logged in"
 		return render_template("login.html")
+
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -44,7 +47,7 @@ def card():
 			return render_template("upload.html")
 		else:
 			visible=""
-			return render_template("complete.html",data="",vis=visible)
+			return render_template("complete.html",data="",vis=visible,error='')
 	return render_template("card.html")
 
 @app.route("/upload", methods=['GET','POST'])
@@ -68,10 +71,10 @@ def upload():
 				print(root.attrib)
 				print(value)
 
-			return render_template("complete.html",data = root.attrib,vis=visible)
+			return render_template("complete.html",data = root.attrib,vis=visible,error='')
 		except:
 			return render_template("upload.html")
-	return render_template("complete.html",data="",vis=visible)
+	return render_template("complete.html",data="",vis=visible,error='')
 
 @app.route("/getfile",methods=["POST"])
 def getfile():
@@ -193,18 +196,23 @@ def getfile():
 	</html>
 		"""		
 	
-		pdf = MyFPDF()
-		#First page
-		pdf.add_page()
-		pdf.write_html(html)
-		pdf.output(os.getcwd()+'/'+uid+'.pdf', 'F')
-		print(os.listdir(os.getcwd()))
-		with open('values.json', "a") as f:
-			dump(request.form, f)
-			f.write("\n")
-		return send_file(os.getcwd()+'/'+uid+'.pdf',attachment_filename=uid+'.pdf',as_attachment=True)
+		x,y=check(uid,"Rajiv Rinn Yojana")
+		print(x,y)
+		if(x==True):
+			pdf = MyFPDF()
+			#First page
+			pdf.add_page()
+			pdf.write_html(html)
+			pdf.output(os.getcwd()+'/'+uid+'.pdf', 'F')
+			print(os.listdir(os.getcwd()))
+			with open('values.json', "a") as f:
+				dump(request.form, f)
+				f.write("\n")
+			return send_file(os.getcwd()+'/'+uid+'.pdf',attachment_filename=uid+'.pdf',as_attachment=True)
+		else :
+			#flash("Already enrolled for "+y)
+			return render_template("complete.html",error="Already enrolled for "+y,data='',vis=visible)
 	return render_template("form.htm")
-
 
 if __name__=='__main__':
 	app.run(debug=True)

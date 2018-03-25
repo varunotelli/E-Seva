@@ -1,4 +1,4 @@
-from flask import Flask,send_file,request,render_template
+from flask import Flask,send_file,request,render_template,redirect,url_for
 #from pdf import create
 from fpdf import FPDF,HTMLMixin
 import os
@@ -12,30 +12,37 @@ app=Flask(__name__)
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 
-@app.route("/")
+@app.route("/",methods=["GET","POST"])
 def index():
-    return render_template("upload.html")
+	if request.method=="POST":
+		if request.form["id-type"]=="aadhar-card":
+			return render_template("upload.html")
+		else:
+			return redirect(url_for('upload'))
+	return render_template("card.html")
 
-@app.route("/upload", methods=['POST'])
+@app.route("/upload", methods=['GET','POST'])
 def upload():
-    target = os.path.join(APP_ROOT, 'file/')
-    print(target)
+	if request.method=='POST':
+	    target = os.path.join(APP_ROOT, 'file/')
+	    print(target)
 
-    if not os.path.isdir(target):
-        os.mkdir(target)
+	    if not os.path.isdir(target):
+	        os.mkdir(target)
 
-    for file in request.files.getlist("file"):
-        print(file)
-        filename = file.filename
-        destination = "/".join([target, filename])
-        print(destination)
-        contents = file.read()
-        value = contents.decode(encoding='UTF-8')
-        root = ET.fromstring(value)
-        print(root.attrib)
-        print(value)
+	    for file in request.files.getlist("file"):
+	        print(file)
+	        filename = file.filename
+	        destination = "/".join([target, filename])
+	        print(destination)
+	        contents = file.read()
+	        value = contents.decode(encoding='UTF-8')
+	        root = ET.fromstring(value)
+	        print(root.attrib)
+	        print(value)
 
-    return render_template("complete.html",data = root.attrib)
+	    return render_template("complete.html",data = root.attrib)
+	return render_template("complete.html",data="")
 
 @app.route("/getfile",methods=["POST"])
 def getfile():

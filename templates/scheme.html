@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Avoidance of duplication of beneficiaries - Select your Scheme</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <title>Avoidance of duplication of beneficiaries - Aadhar Details</title>
+
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/scheme.css') }}">
+<body>
+	<div class="page-header row head">
+     	<h1><b>Government of Gujarat </b>- Avoidance of duplication of beneficiaries</h1>
+     </div>
+     <div class="row">
+     	<div class="col-sm-4">
+            <img src="/static/img/GujaratEmblem.png">
+        </div>
+        <div class="col-sm-3">
+        	<form id="scheme-form" class="form-signin">
+        		<h1 class="h3 mb-3 font-weight-normal">Please select your scheme</h1>
+        		<select id="scheme" class="form-control">
+        		</select>
+        		<br><br><br><br><br><br>
+        		<button type="submit" class="btn btn-primary btn-lg btn-block">Next</button>
+        	</form>
+        </div>
+        <div class="col-sm-4 desc">
+        	<center>
+        		<h1 class="h3 mb-3 font-weight-normal">Scheme Description</h1>
+        	</center>
+        	<hr>
+        </div>
+        
+     </div>
+</body>
+</html>

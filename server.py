@@ -6,7 +6,7 @@ from json import dump
 import xml.etree.ElementTree as ET
 visible="readonly"
 class MyFPDF(FPDF, HTMLMixin):
-    pass
+	pass
 
 
 app=Flask(__name__)
@@ -26,24 +26,27 @@ def index():
 @app.route("/upload", methods=['GET','POST'])
 def upload():
 	if request.method=='POST':
-	    target = os.path.join(APP_ROOT, 'file/')
-	    print(target)
+		target = os.path.join(APP_ROOT, 'file/')
+		print(target)
 
-	    if not os.path.isdir(target):
-	        os.mkdir(target)
+		if not os.path.isdir(target):
+			os.mkdir(target)
+		try:
 
-	    for file in request.files.getlist("file"):
-	        print(file)
-	        filename = file.filename
-	        destination = "/".join([target, filename])
-	        print(destination)
-	        contents = file.read()
-	        value = contents.decode(encoding='UTF-8')
-	        root = ET.fromstring(value)
-	        print(root.attrib)
-	        print(value)
+			for file in request.files.getlist("file"):
+				print(file)
+				filename = file.filename
+				destination = "/".join([target, filename])
+				print(destination)
+				contents = file.read()
+				value = contents.decode(encoding='UTF-8')
+				root = ET.fromstring(value)
+				print(root.attrib)
+				print(value)
 
-	    return render_template("complete.html",data = root.attrib,vis=visible)
+			return render_template("complete.html",data = root.attrib,vis=visible)
+		except:
+			return render_template("upload.html")
 	return render_template("complete.html",data="",vis=visible)
 
 @app.route("/getfile",methods=["POST"])
@@ -72,96 +75,96 @@ def getfile():
 		<!DOCTYPE html>
 		<html lang="en">
 		<body>
-  			<center>
-  			<img align="center" src="logo-gov.png" alt="logo-gov" width="72" height="72"/></center>
-  			<h2 align="center"><b>MINISTRY OF SOCIAL JUSTICE AND EMPOWERMENT</b></h2>
- 			<br><hr><h2 align="center"><b>AADHAR DETAILS</b></h2><br>
- 			<table align="center" border="0" width="70%">
- 			 	<tr>
- 			 		<td width="10%"></td>
- 			 		<td width="40%"><b>UID : </b></td>
- 			 		<td width="50%" align="right">"""+uid+"""</td>
- 			 	</tr>
- 			 	<br>
- 			 	<tr>
- 			 		<td width="10%"></td>
- 			 		<td width="40%"><b>Name : </b></td>
- 			 		<td width="50%" align="right">"""+name+"""</td>
- 			 	</tr>
- 			 	<br>
- 			 	<tr>
- 			 		<td width="10%"></td>
- 			 		<td width="40%"><b>Gender : </b></td>
- 			 		<td width="50%" align="right">"""+gender+"""</td>
- 			 	</tr>
- 			 	<br>
- 			 	<tr>
- 			 		<td width="10%"></td>
- 			 		<td width="40%"><b>Year of Birth : </b></td>
- 			 		<td width="50%" align="right">"""+yob+"""</td>
- 			 	</tr>
- 			 	<br>
- 			 	<tr>
- 			 		<td width="10%"></td>
- 			 		<td width="40%"><b>Care of : </b></td>
- 			 		<td width="50%" align="right">"""+co+"""</td>
- 			 	</tr>
- 			 	<br>
- 			 	<tr>
- 			 		<td width="10%"></td>
- 			 		<td width="40%"><b>House : </b></td>
- 			 		<td width="50%" align="right">"""+lm+"""</td>
- 			 	</tr>
- 			 	<br>
- 			 	<tr>
- 			 		<td width="10%"></td>
- 			 		<td width="40%"><b>Landmark : </b></td>
- 			 		<td width="50%" align="right">"""+loc+"""</td>
- 			 	</tr>
- 			 	<br>
- 			 	<tr>
- 			 		<td width="10%"></td>
- 			 		<td width="40%"><b>Village/Town/City : </b></td>
- 			 		<td width="50%" align="right">"""+vtc+"""</td>
- 			 	</tr>
- 			 	<br>
- 			 	<tr>
- 			 		<td width="10%"></td>
- 			 		<td width="40%"><b>Post Office Name : </b></td>
- 			 		<td width="50%" align="right">"""+po+"""</td>
- 			 	</tr>
- 			 	<br>
- 			 	<tr>
- 			 		<td width="10%"></td>
- 			 		<td width="40%"><b>District : </b></td>
- 			 		<td width="50%" align="right">"""+dist+"""</td>
- 			 	</tr>
- 			 	<br>
- 			 	<tr>
- 			 		<td width="10%"></td>
- 			 		<td width="40%"><b>State : </b></td>
- 			 		<td width="50%" align="right">"""+state+"""</td>
- 			 	</tr>
- 			 	<br>
- 			 	<tr>
- 			 		<td width="10%"></td>
- 			 		<td width="40%"><b>Pincode : </b></td>
- 			 		<td width="50%" align="right">"""+pc+"""</td>
- 			 	</tr>
- 			 	<br>
- 			 	<tr>
- 			 		<td width="10%"></td>
- 			 		<td width="40%"><b>Income : </b></td>
- 			 		<td width="50%" align="right">"""+inc+"""</td>
- 			 	</tr>
- 			 	<br>
- 			 	<tr>
- 			 		<td width="10%"></td>
- 			 		<td width="40%"><b>Phone Number : </b></td>
- 			 		<td width="50%" align="right">"""+mobile+"""</td>
- 			 	</tr>
- 			 	<br>
- 			 </table>
+			<center>
+			<img align="center" src="logo-gov.png" alt="logo-gov" width="72" height="72"/></center>
+			<h2 align="center"><b>MINISTRY OF SOCIAL JUSTICE AND EMPOWERMENT</b></h2>
+			<br><hr><h2 align="center"><b>AADHAR DETAILS</b></h2><br>
+			<table align="center" border="0" width="70%">
+				<tr>
+					<td width="10%"></td>
+					<td width="40%"><b>UID : </b></td>
+					<td width="50%" align="right">"""+uid+"""</td>
+				</tr>
+				<br>
+				<tr>
+					<td width="10%"></td>
+					<td width="40%"><b>Name : </b></td>
+					<td width="50%" align="right">"""+name+"""</td>
+				</tr>
+				<br>
+				<tr>
+					<td width="10%"></td>
+					<td width="40%"><b>Gender : </b></td>
+					<td width="50%" align="right">"""+gender+"""</td>
+				</tr>
+				<br>
+				<tr>
+					<td width="10%"></td>
+					<td width="40%"><b>Year of Birth : </b></td>
+					<td width="50%" align="right">"""+yob+"""</td>
+				</tr>
+				<br>
+				<tr>
+					<td width="10%"></td>
+					<td width="40%"><b>Care of : </b></td>
+					<td width="50%" align="right">"""+co+"""</td>
+				</tr>
+				<br>
+				<tr>
+					<td width="10%"></td>
+					<td width="40%"><b>House : </b></td>
+					<td width="50%" align="right">"""+lm+"""</td>
+				</tr>
+				<br>
+				<tr>
+					<td width="10%"></td>
+					<td width="40%"><b>Landmark : </b></td>
+					<td width="50%" align="right">"""+loc+"""</td>
+				</tr>
+				<br>
+				<tr>
+					<td width="10%"></td>
+					<td width="40%"><b>Village/Town/City : </b></td>
+					<td width="50%" align="right">"""+vtc+"""</td>
+				</tr>
+				<br>
+				<tr>
+					<td width="10%"></td>
+					<td width="40%"><b>Post Office Name : </b></td>
+					<td width="50%" align="right">"""+po+"""</td>
+				</tr>
+				<br>
+				<tr>
+					<td width="10%"></td>
+					<td width="40%"><b>District : </b></td>
+					<td width="50%" align="right">"""+dist+"""</td>
+				</tr>
+				<br>
+				<tr>
+					<td width="10%"></td>
+					<td width="40%"><b>State : </b></td>
+					<td width="50%" align="right">"""+state+"""</td>
+				</tr>
+				<br>
+				<tr>
+					<td width="10%"></td>
+					<td width="40%"><b>Pincode : </b></td>
+					<td width="50%" align="right">"""+pc+"""</td>
+				</tr>
+				<br>
+				<tr>
+					<td width="10%"></td>
+					<td width="40%"><b>Income : </b></td>
+					<td width="50%" align="right">"""+inc+"""</td>
+				</tr>
+				<br>
+				<tr>
+					<td width="10%"></td>
+					<td width="40%"><b>Phone Number : </b></td>
+					<td width="50%" align="right">"""+mobile+"""</td>
+				</tr>
+				<br>
+			 </table>
 		</body>
 	</html>
 		"""		

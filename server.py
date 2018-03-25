@@ -1,4 +1,4 @@
-from flask import Flask,send_file,request,render_template,redirect,url_for
+from flask import Flask,send_file,request,render_template,redirect,url_for,session,flash
 #from pdf import create
 from fpdf import FPDF,HTMLMixin
 import os
@@ -11,10 +11,34 @@ class MyFPDF(FPDF, HTMLMixin):
 
 app=Flask(__name__)
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+app.config['SESSION_TYPE'] = 'memcached'
+app.config['SECRET_KEY'] = 'super secret key'
 
 
-@app.route("/",methods=["GET","POST"])
+@app.route("/", methods=["GET","POST"])
 def index():
+	if not session.get('logged_in'):
+		if request.method == 'POST':
+			if request.form['password'] == 'password' and request.form['username'] == 'admin':
+				session['logged_in'] = True
+				return redirect(url_for('card'))
+			else:
+				flash('Wrong password!')
+		return render_template("login.html")
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+	if request.method == 'POST':
+		if request.form['password'] == 'password' and request.form['username'] == 'admin':
+			session['logged_in'] = True
+			return redirect(url_for('card'))
+		else:
+			flash('Wrong password!')
+	return render_template("login.html")
+
+@app.route("/card",methods=["GET","POST"])
+def card():
 	if request.method=="POST":
 		if request.form["id-type"]=="aadhar-card":
 			return render_template("upload.html")

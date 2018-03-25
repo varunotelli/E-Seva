@@ -4,6 +4,7 @@ from fpdf import FPDF,HTMLMixin
 import os
 from json import dump
 import xml.etree.ElementTree as ET
+visible="readonly"
 class MyFPDF(FPDF, HTMLMixin):
     pass
 
@@ -18,7 +19,8 @@ def index():
 		if request.form["id-type"]=="aadhar-card":
 			return render_template("upload.html")
 		else:
-			return redirect(url_for('upload'))
+			visible=""
+			return render_template("complete.html",data="",vis=visible)
 	return render_template("card.html")
 
 @app.route("/upload", methods=['GET','POST'])
@@ -41,8 +43,8 @@ def upload():
 	        print(root.attrib)
 	        print(value)
 
-	    return render_template("complete.html",data = root.attrib)
-	return render_template("complete.html",data="")
+	    return render_template("complete.html",data = root.attrib,vis=visible)
+	return render_template("complete.html",data="",vis=visible)
 
 @app.route("/getfile",methods=["POST"])
 def getfile():

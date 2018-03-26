@@ -234,7 +234,7 @@ def get_scheme():
 	return jsonify(data=arr)
 
 @app.route('/get_desc')
-def get_scheme():
+def get_desc():
 	c,conn=connection()
 	c.execute("select desc from schemes where name='"+request.args.get('name')+"'")
 	results=c.fetchall()

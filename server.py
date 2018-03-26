@@ -6,6 +6,7 @@ from json import dump
 import xml.etree.ElementTree as ET
 from db_checker import check
 from dbconnector import connection
+from sms import send
 visible="readonly"
 class MyFPDF(FPDF, HTMLMixin):
 	pass
@@ -215,6 +216,7 @@ def getfile():
 			with open('values.json', "a") as f:
 				dump(request.form, f)
 				f.write("\n")
+			send(number=mobile,scheme="Rajiv Rinn Yojana")
 			return send_file(os.getcwd()+'/'+uid+'.pdf',attachment_filename=uid+'.pdf',as_attachment=True)
 		else :
 			#flash("Already enrolled for "+y)

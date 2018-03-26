@@ -1,10 +1,11 @@
-from flask import Flask,send_file,request,render_template,redirect,url_for,session,flash
+from flask import Flask,send_file,request,render_template,redirect,url_for,session,flash,jsonify
 #from pdf import create
 from fpdf import FPDF,HTMLMixin
 import os
 from json import dump
 import xml.etree.ElementTree as ET
 from db_checker import check
+from dbconnector import connection
 visible="readonly"
 class MyFPDF(FPDF, HTMLMixin):
 	pass
@@ -14,6 +15,10 @@ app=Flask(__name__)
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 app.config['SESSION_TYPE'] = 'memcached'
 app.config['SECRET_KEY'] = 'super secret key'
+
+@app.errorhandler(404)
+def page_not_found():
+	return "<h1>Error 404: Page not found</h1>"
 
 
 @app.route("/", methods=["GET","POST"])
@@ -215,6 +220,31 @@ def getfile():
 			#flash("Already enrolled for "+y)
 			return render_template("complete.html",error="Already enrolled for "+y,data='',vis=visible)
 	return render_template("form.htm")
+
+
+@app.route('/get_scheme')
+def get_scheme():
+	c,conn=connection()
+	c.execute("select name from schemes")
+	results=c.fetchall()
+	arr=[]
+	for rows in results:
+		arr.append(rows[0])
+
+	return jsonify(data=arr)
+
+@app.route('/get_desc')
+def get_scheme():
+	c,conn=connection()
+	c.execute("select desc from schemes where name='"+request.args.get('name')+"'")
+	results=c.fetchall()
+	x=None
+	for rows in results:
+		x=rows[0]
+
+	return jsonify(data=x)
+
+
 
 if __name__=='__main__':
 	app.run(debug=True)

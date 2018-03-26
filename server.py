@@ -27,10 +27,12 @@ def index():
 				flash('Wrong password!')
 				return "Logged in"
 		return render_template("login.html")
+	else:
+		return redirect(url_for('card'))
 
 
 
-@app.route("/login", methods=["GET", "POST"])
+'''@app.route("/login", methods=["GET", "POST"])
 def login():
 	if request.method == 'POST':
 		if request.form['password'] == 'password' and request.form['username'] == 'admin':
@@ -38,7 +40,7 @@ def login():
 			return redirect(url_for('card'))
 		else:
 			flash('Wrong password!')
-	return render_template("login.html")
+	return render_template("login.html")'''
 
 @app.route("/card",methods=["GET","POST"])
 def card():

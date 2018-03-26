@@ -1,0 +1,114 @@
+CREATE TABLE SCHEMES(
+	ID INT(5) PRIMARY KEY AUTO_INCREMENT,
+	NAME VARCHAR(100) NOT NULL,
+	DESCRIPTION VARCHAR(5000) NOT NULL,
+	ELIGIBILITY VARCHAR(5000) NOT NULL,
+	CATEGORY VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE USER(
+	UNIQUED_ID INT(1) PRIMARY KEY AUTO_INCREMENT,
+	ID VARCHAR(12) UNIQUE,
+	ID_TYPE INT(1) NOT NULL,
+	NAME VARCHAR(50) NOT NULL,
+	GENDER INT(1) NOT NULL,
+	YEAR_OF_BIRTH INT(4) NOT NULL,
+	FATHER_OR_SPOUSE_NAME VARCHAR(50) NOT NULL,
+	ADDRESS VARCHAR(100) NOT NULL,
+	PINCODE INT(6) NOT NULL,
+	INCOME FLOAT(6,2) DEFAULT 0,
+	SCHEMES_APPLIED VARCHAR(200) DEFAULT " "
+);
+
+INSERT INTO SCHEMES (NAME,DESCRIPTION,ELIGIBILITY,CATEGORY) VALUES
+
+("Saraswati Sadhna Yojana (Bicycle)","For SC girls cycles are provided through this scheme. A sum of Rs. 1500 is given to buy a bicycle for girls below 8th grade. For students in elementary & high school food and lodging are provided free of cost.","Enrolled as a regular student in class 8 and belonging to SC category.\nHailing from Below Poverty Line families and having the following parental income:\nAnnual income should be Less than Rs 21,206 (for applicants from urban areas)\nAnnual income should be Less than Rs 15,976 per annum (for applicants from rural areas)\nThe girl should be commuting outside of her village to attend school because of absence of a high school in her own village.","W007"),
+
+("New Swarnima Yojana","Inculcating the spirit of self-dependence among the women of Backward classes living below double the poverty line under Term Loan. Maximum Loan Amount Rs.1.00 Lakh (Per beneficiary)","The women belonging to Backward Classes as notified by the Central / State Governments from time to time shall be eligible for loan under this scheme.\nThe annual family income of the applicant should be below Rs.1, 20,000/- p.a. in urban areas and Rs.98, 000/- p.a. in rural areas.","W001"),
+
+("SWADHAR Greh","Under the Scheme , Swadhar Greh will be set up in every district with capacity of 30 women with the following objectives:\na) To cater to the primary need of shelter, food, clothing, medical treatment and care of the women in distress and who are without any social and economic support.\nb) To enable them to regain their emotional strength that gets hampered due to their encounter with unfortunate circumstances.\nc) To provide them with legal aid and guidance to enable them to take steps for their readjustment in family/society.\nd) To rehabilitate them economically and emotionally.Page 2 of 27\ne) To act as a support system that understands and meets various requirements of women in distress.\nf) To enable them to start their life afresh with dignity and conviction","The benefit of the scheme could be availed by women above 18 years of age of the following categories:\na) Women who are deserted and are without any social and economic support\nb) Women survivors of natural disasters who have been rendered homeless and are without any social and economic support\nc) Women prisoners released from jail and are without family, social and economic support\nd) Women victims of domestic violence, family tension or discord, who are made to leave their homes without any means of subsistence and have no special protection from exploitation and/ or facing litigation on account of marital disputes and\ne) Trafficked women/girls rescued or runaway from brothels or other places where they face exploitation and Women affected by HIV/AIDS who do not have any social or economic support.","W002"),
+
+("Support to Training and Employment Programme for Women (STEP)","The Ministry has been administering ‘Support to Training and Employment Programme for Women (STEP) Scheme’ since 1986-87 as a ‘Central Sector Scheme’. The STEP Scheme aims to provide skills that give employability to women and to provide competencies and skill that enable women to become self-employed/entrepreneurs. The Scheme is intended to benefit women who are in the age group of 16 years and above across the country. The grant under the Scheme is given to an institution/ organisation including NGOs directly and not the States/ UTs. The assistance under STEP Scheme will be available in any sector for imparting skills related to employability and entrepreneurship, including but not limited to the Agriculture, Horticulture, Food Processing, Handlooms, Tailoring, Stitching, Embroidery, Zari etc, Handicrafts, Computer & IT enable services along with soft skills and skills for the work place such as spoken English, Gems & Jewellery, Travel & Tourism, Hospitality.","Women who are in the age group of 16 years and above across the country.","W001"),
+
+("Mahila E-Haat","Mahila E-Haat is an initiative for meeting aspirations and needs of women entrepreneurs. This start up at Rashtriya Mahila Kosh website leverages technology for showcasing products made/manufactured/sold by women entrepreneurs. They can even showcase their services reflecting their creative potential. This unique e-platform will strengthen the socio-economic empowerment of women.","Women with suitable items to be sold","W003"),
+
+("Working Women Hostel","The objective of the scheme is to promote availability of safe and conveniently located accommodation for working women, with day care facility for their children, wherever possible, in urban, semi urban, or even rural areas where employment opportunity for women exist. The scheme is assisting projects for construction of new hostel buildings, expansion of existing hostel buildings and hostel buildings in rented premises. The working women s hostel projects being assisted under this scheme shall be made available to all working women without any distinction with respect to caste, religion, marital status etc., subject to norms prescribed under the scheme. While the projects assisted under this scheme are meant for working women, women under training for job may also be accommodated in such hostels subject to the condition that taken together, such trainees should not occupy more than 30% of the total capacity the hostel and they may be accommodated in the hostels only when adequate numbers of working women are not available. Children of working women, up to the age of 18 years for girls and up to the age of 5 years for boys may be accommodated in such hostels with their mothers","Following categories of working women and their children are being covered under this Scheme:\n(i) Working women, who may be single, widowed, divorced, separated, married but whose husband or immediate family does not reside in the same city/area. Particular preference may be given to women from disadvantaged sections of the society. There should be also provision for reservation ofseats for physically challenged beneficiaries.\n(ii) Women who are under training for job provided the total training period does not exceed one year. This is only on the condition that there is vacancy available after accommodating working women. The number of women under training for job should not exceed 30% of the total capacity.\n(iii) Girls up to the age of 18 years and boys up to the age of 5 years, accompanying working mothers will be provided accommodation, with their mothers. Working mothers may also avail of the services of the Day Care Centre, as provided under the scheme.","W002"),
+
+("Scheme for Adolescent Girls (SAG)","An integrated package of services is to be provided to AGs that would be as followsi. Nutrition provision \nii. Iron and Folic Acid (IFA) supplementation \niii. Health check-up and Referral services \niv. Nutrition & Health Education (NHE) \nv. Counseling/Guidance on family welfare, ARSH, child care practices and home management \nvi. Life Skill Education and accessing public services \nvii. Vocational training for girls aged 16 and above under National Skill Development Program (NSDP)","Adolescent Girls","W004"),
+
+("Pradhan Mantri Matru Vandana Yojana","Providing partial compensation for the wage loss in terms of cash incentives so that the woman can take adequate rest before and after delivery of the first living child.\nThe cash incentive provided would lead to improved health seeking behaviour amongst the Pregnant Women and Lactating Mothers (PW&LM).","All Pregnant Women and Lactating Mothers, excluding PW&LM who are in regular employment with the Central Government or the State Governments or PSUs or those who are in receipt of similar benefits under any law for the time being in force.\nAll eligible Pregnant Women and Lactating Mothers who have their pregnancy on or after 01.01.2017 for first child in family.\nThe date and stage of pregnancy for a beneficiary would be counted with respect to her LMP date as mentioned in the MCP card.","W005"),
+
+("Mata Yashoda Gaurav Nidhi","An insurance scheme for Anganwadi workers In an attempt to provide social security to AWWs and AWHs, Mata YashodaGauravNidhi Insurance has been started by the Gujarat State Government.","AWWs and AWHs","W006"),
+
+("Pradhan Mantri Awas Yojana","The Pradhan Mantri Awas Yojana was initiated back in 2015 with a view to serve a number of purposes. These are:\nTo ensure that the poorer sections of urban India can live under a roof of their own.\nTo provide financial support to people who can’t bear the entire cost of building a residential property.\nTo offer houses to the Economically Weaker Sections (EWS) of the society.\nTo bring both public and private sector together in a bid to improve the fate of the nation’s urban poor populace.","Economically Weaker Section (EWS):People who earn an annual household income less than Rs.3 lakh come under the EWS category. However, an applicant claiming to be from EWS needs to provide relevant proof to the government to ascertain their claims.\nLight Income Group (LIG):People that fall under LIG category usually have an annual household income ranging between Rs.3 lakh to 6 lakh. Again, to be eligible for consideration, they need to provide sufficient proof of their economic standing.\nMedium Income Group (MIG1):Those who earn an annual household income below Rs.12 lakh fall under the MIG1 category. These people can avail loans of up to Rs.9 lakh for the construction of a residence.\nMedium Income Group (MIG2):Individuals earning an annual household income between Rs.12 to Rs.18 lakh will fall under MIG2 of the PMAY scheme. These people can avail loans of up to Rs.12 lakh.\nMinorities:People hailing from minority groups like SC/ST/OBC will fall under minorities. To be considered under the PMAY scheme, these people need to meet to provide relevant caste and income certificates.\nWomen:Women belonging to EWS/LIG categories will be considered if they apply under the PMAY scheme.","H001"),
+
+("Rajiv Rinn Yojana","The RRY scheme is launched as an interest subsidy scheme for Housing as an instrument to address the housing needs of Economically Weaker Sections (EWS) and Low-Income Groups (LIG) segments in urban areas, through enhanced credit flow.","The beneficiaries, designated as Below Poverty Line (BPL), EWS or LIG may directly approach Banks/Housing Finance Corporations, collectively called Primary Lending Institutions (PLI), for availing benefit under the scheme.","H001"),
+
+("Mukhya mantri gruh yojana","The objective of Mukhya Mantri GRUH Yojna is to supply budget-friendly residence as EWS, LIG, MIG, HIG, G +2, multi flats structure, self-reliance residence and also property stories and so on.","Econonmically Weaker Sections","	H001"),
+			
+("Mukhyamantri Yuva Swavalamban","Scholarship for meritorious and finacially challenged students","Students have 90% Marks in 12th Class.\nStudents passed 12th class from a recognized board.\nStudents family income should not more than 4.5 lac Rupees.\nStudent should be the Resident of Gujarat.","E003"),
+
+("Pre-Matric Scholarship to SC Student","The objective of the pre-matric Scheme is to support the parents of SC children for educating their wards, so that the incidence of drop outs at this stage is minimized.","Scheduled Caste","E001"),
+
+("Post-Matric Scholarship to SC Student","Post Matric Scholarship scheme is a Centrally Sponsored Scheme and implemented through State Government and UT administration. The Scheme provides financial assistance to the Scheduled Caste students studying at post matriculation or post-secondary stage to enable them to complete their education. These scholarships are available for studies in India only and are awarded by the government of the State/Union Territory to which the applicant actually belongs i.e. permanently settled.","Scheduled Caste","E001"),
+
+("National Overseas Scholarship","The Scheme provides financial assistance to the finally selected candidates for pursuing Master level courses and Ph.D abroad in the accredited Institutions/University by an authorized body of that country, under the Scheme in following specified fields of study:\nEngineering and Management\nPure Sciences & Applied Sciences\nAgricultural Sciences and Medicine\nCommerce, Accounting & Finance and\nHumanities, Social Science & Fine Arts	Schedules Castes. For Ph.D: 55% marks or equivalent grade in relevant Masters' Degree.For Masters' Degree: 55% marks or equivalent grade in relevant Bachelors' Degree. Below 35 (Thirty Five) years, as on First day of the month of April of the Advertisement of the Scheme.	E002
+Scholarship to the disabled students","These fellowships will be available to students with disabilities who are covered under the Persons with Disabilities (Equal Opportunities, Protection of Rights and Full Participation) Act, 1995. Thus, a person with disability who wishes to avail the benefit under the Act has to obtain a disability certificate from the medical authority notified for the purpose.	Any student with disabilities who has been admitted to M.PhiI./Ph.D. degree in a University or academic institution by completing the required formalities for admission at that University or academic institution is eligible for the award of Fellowship subject to provision of the scheme","E001"),
+
+("Scholarship to the disabled students","These fellowships will be available to students with disabilities who are covered under the Persons with Disabilities (Equal Opportunities, Protection of Rights and Full Participation) Act, 1995. Thus, a person with disability who wishes to avail the benefit under the Act has to obtain a disability certificate from the medical authority notified for the purpose.","Any student with disabilities who has been admitted to M.PhiI./Ph.D. degree in a University or academic institution by completing the required formalities for admission at that University or academic institution is eligible for the award of Fellowship subject to provision of the scheme","E001"),			
+
+("Employees’ State Insurance Scheme","The Employees' State Insurance Scheme is an integrated measure of Social Insurance embodied in the Employees' State Insurance Act and it is designed to accomplish the task of protecting 'employees' as defined in the Employees' State Insurance Act, 1948 against the impact of incidences of sickness, maternity, disablement and death due to employment injury and to provide medical care to insured persons and their families. The ESI Scheme applies to factories and other establishment's viz. Road Transport, Hotels, Restaurants, Cinemas, Newspaper, Shops, and Educational/Medical Institutions wherein 10 or more persons are employed.","Employees of the aforesaid categories of factories and establishments, drawing wages upto Rs.15,000/- a month, are entitled to social security cover under the ESI Act. ESI Corporation has also decided to enhance wage ceiling for coverage of employees under the ESI Act from Rs.15,000/- to Rs.21,000/-.","F001"),
+			
+("Shilpa Samada Scheme","The objective of this scheme is to upgrade the technical and entrepreneurial skill of Backward Classes by way of providing training and financial assistance under Term Loan for self-employment in traditional craft etc. The loan under the scheme may be considered to the artisans and handicraft persons to secure their traditional art & craft and to provide training to upgrade their existing skills with latest technological inputs such as use of computers, CAD, design development etc. The maximum loan limit is Rs.10 Lakh.","Members of Backward Classes, as notified by Central Government/State Governments from time to time.\nThe annual income of the applicants family should be below double the poverty line i.e. Rs.1,20,000/- p.a. in urban areas and Rs.98, 000/- p.a. in rural areas.","B001");
+
+INSERT INTO USER (ID,ID_TYPE,NAME,GENDER,YEAR_OF_BIRTH,FATHER_OR_SPOUSE_NAME,ADDRESS,PINCODE,INCOME,SCHEMES_APPLIED) VALUES 
+(305369939396,0,'Arjuna Badakar',0,1982,'Dyal Badakar','Block-8, Quarter-1,Gujarat',382120,5000,'10,11'),
+(320495840809,0,'Nagini Gulati',1,1987,'Aakash Punja','Block-8, Quarter-2,Gujarat',382120,5000,'2'),
+(422898674703,0,'Jatayu Jayavant',0,1967,'Jagadis Jayavant','Block-8, Quarter-3,Gujarat',382120,5000,'11'),
+(495327419265,0,'Ashan Kayal',0,1965,'Roodra Kayal','Block-8, Quarter-4,Gujarat',382120,5000,'11,12'),
+(970738439187,0,'Govinda Dhibar',0,1987,'Megaduta Dhibar','Block-8, Quarter-5,Gujarat',382120,5000,'10'),
+(721565965098,0,'Aryabhatta Pandey',0,1990,'Prashant Pandey','Block-8, Quarter-6,Gujarat',382120,5000,'18'),
+(163654450982,0,'Daksha Chipalunakar',0,1989,'Amrit Chipalunakar','Block-8, Quarter-7,Gujarat',382120,5000,'12'),
+(978253406984,0,'Mishri Nayar',0,1989,'Prashant Nayar','Block-8, Quarter-8,Gujarat',382120,5000,'10,11'),
+(639613007168,0,'Zalim Parachure',0,1978,'Pandu Parachure','Block-8, Quarter-9,Gujarat',382120,5000,'10'),
+(210961370330,0,'Jamadagni Bajpai',0,1968,'Chandrama Bajpai','Block-8, Quarter-10,Gujarat',382120,5000,'11'),
+(708122673996,0,'Bhageerathi Patvardhan',1,1996,'Jeet Barvadekar','Block-8, Quarter-11,Gujarat',382120,2000,'6'),
+(326674386864,0,'Viswarupa Munshi',0,1950,'Jaswant Munshi','Block-8, Quarter-12,Gujarat',382120,3300,'11,12'),
+(820062046973,0,'Praanvi Naidu',1,1996,'Pranav Talavalakar','Block-8, Quarter-13,Gujarat',382120,3300,'10'),
+(890405737400,0,'Zohana Raj',1,1997,'Krishan Chaudhari','Block-8, Quarter-14,Gujarat',382120,3300,'2,15'),
+(136229650204,0,'Anu Gandhi',1,1978,'Akshey Devdhar','Block-8, Quarter-15,Gujarat',382120,3300,'15,16'),
+(769058313369,0,'Ashia Ashtikar',1,1990,'Benegal Ganapuli','Block-8, Quarter-16,Gujarat',382120,2500,'16'),
+(779183744444,0,'Chandika Joshi',1,1996,'Ragunath Bhate','Block-8, Quarter-17,Gujarat',382120,2500,'19'),
+(150889975961,0,'Karuna Kamath',1,1998,'Surendranath Randhawa','Block-8, Quarter-18,Gujarat',382120,2500,'13,17'),
+(144356929120,0,'Sumit Singh',0,1956,'Pravarasena Singh','Block-8, Quarter-19,Gujarat',382120,2500,'10'),
+(548598980786,0,'Maya Gharapure',1,1978,'Kusika Khamavant','Block-8, Quarter-20,Gujarat',382120,2500,'2'),
+(751682534451,0,'Veer Dhebar',0,1982,'Gagan Dhebar','Block-8, Quarter-21,Gujarat',382120,2500,'10,11,19'),
+(681176297117,0,'Shinu Bhatta',	1,1987,'Rahul Barvadekar','Block-8, Quarter-22,Gujarat',382120,2500,'8,9,19'),
+(802024784923,0,'Minakshi Kapil',1,1967,'Pranav Valimbe','Block-8, Quarter-23,Gujarat',382120,2500,'5,9'),
+(995117583652,0,'Komal Gulati',1,1965,'Patanjali Mahanta','Block-8, Quarter-24,Gujarat',382120,8000,'4,5,8,9'),
+(700199242270,0,'Anguri Phadanis',0,1987,'Nasatya Phadanis','Block-8, Quarter-25,Gujarat',382120,9000,'12,18'),
+('SRFPH2503A',1,'Megh Holkar',0,1990,'Benegal Holkar','Block-8, Quarter-26,Gujarat',382120,2000,'10,18'),
+('JNVPD5312B',1,'Saanvi Dhebar',1,1989,'Prashant Barigai','Block-8, Quarter-27,Gujarat',382120,2000,'2'),
+('JIQPH2263F',1,'Sarojini Heravdakar',1,1989,'Viswamitra Divekar','Block-8, Quarter-28,Gujarat',382120,2000,'2'),
+('PDIPT6772E',1,'Anu Tipanis',1,1978,'Vishnu Jadhav','Block-8, Quarter-29,Gujarat',382120,2000,'3,4,8'),
+('HZPPJ4086W',1,'Baibhav Jadhav',0,1968,'Purshottama Jadhav','Block-8, Quarter-30,Gujarat',382120,2000,'10,11,12'),
+('HOKPK4964G',1,'Maha Kapadia',0,1996,'Vikramaditya Kapadia','Block-8, Quarter-31,Gujarat',382120,2000,'13,16,17'),
+('ORZPA3362P',1,'Siddhi Adhya',1,1950,'Vasishtha Satavelekar','Block-8, Quarter-32,Gujarat',382120,1000,'4,5'),
+('CTLPP2621W',1,'Krishan Parikh',0,1996,'Vrikodara Parikh','Block-8, Quarter-33,Gujarat',382120,1500,'13,14,15,17'),
+('MDWPG5233Y',1,'Manasa Gayakvad',1,1997,'Ashutosh Lata','Block-8, Quarter-34,Gujarat',382120,1500,'2'),
+('ANQPP4957Q',1,'Anand Punja',0,1978,'Navneet Punja','Block-8, Quarter-35,Gujarat',382120,7500,'10,12,18,19'),
+('UJZPS1579H',1,'Pravarasena Srivastav',0,1990,'MAdhava Srivastav','Block-8, Quarter-36,Gujarat',382120,7500,'18'),
+('FLRPG6651A',1,'Sharya Gurnani',0,1996,'Ganesh Gurnani','Block-8, Quarter-37,Gujarat',382120,7500,'10,11,12,19'),
+('OBBPM7683V',1,'Amandara Mudaliyar',1,1998,'Viswarupa Panja','Block-8, Quarter-38,Gujarat',382120,7500,'1,13,14,19'),
+('DATPM9348L',1,'Chandrama Malviya',0,1956,'Arjuna Malviya','Block-8, Quarter-39,Gujarat',382120,7500,'12'),
+('LTXPR3412H',1,'Chhotu Rajavade',0,1978,'Asha Rajavade','Block-8, Quarter-40,Gujarat',382120,7500,'10,18,19'),
+('FYMPS4577W',1,'Alia Satavelekar',1,1982,'Vijya Seth','Block-8, Quarter-41,Gujarat',382120,7500,'8,9'),
+('CSEPB1234D',1,'Vayu Bhatavadekar',1,1987,'Aryabhatta Parachure','Block-8, Quarter-42,Gujarat',382120,7500,'2,3,19'),
+('MAJPA4512G',1,'Sumit Ayyar',0,1967,'Amar Ayyar','Block-8, Quarter-43,Gujarat',382120,7500,'18'),
+('AYIPD9012F',1,'Vaidehi Dayal',1,1965,'Vinay Bagchi','Block-8, Quarter-44,Gujarat',382120,7500,'3,6'),
+('MWHPH3412B',1,'Dasra Holkar',0,1987,'Har Holkar','Block-8, Quarter-45,Gujarat',382120,7500,'10'),
+('ODQPG4000A',1,'Mataji Gupta',1,1990,'Pravarasena Pandey','Block-8, Quarter-46,Gujarat',382120,6000,'4,19'),
+('EFRPD6712V',1,'Govinda Devdhar',0,1989,'Mahava Devdhar','Block-8, Quarter-47,Gujarat',382120,6000,'10'),
+('ZEDPB9012N',1,'Vineet Bhatta',0,1989,'Kanada Bhatta','Block-8, Quarter-48,Gujarat',382120,6000,'12'),
+('RTYPM3486G',1,'Ajatasatru Mudaliyar',0,1978,'Jhanda Mudaliyar','Block-8, Quarter-49,Gujarat',382120,6000,'10,11,18'),
+('WERPV4011L',1,'Phoolan Vaknis',1,1968,'Ragunath Kamal','Block-8, Quarter-50,Gujarat',382120,6000,'2,19');

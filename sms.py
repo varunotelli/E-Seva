@@ -20,8 +20,7 @@ def send(number,scheme):
 	data = 'username='+username+'&password='+passwd+'&Submit=Sign+in'
 	 
 	#For Cookies:
-	cj = http.cooki
-	ejar.CookieJar()
+	cj = http.cookiejar.CookieJar()
 	opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
 	 
 	# Adding Header detail:

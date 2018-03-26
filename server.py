@@ -35,6 +35,10 @@ def index():
 	else:
 		return redirect(url_for('card'))
 
+@app.route("/scheme",methods=["GET","POST"])
+def schemeList():
+	return render_template("scheme.html")
+
 
 
 '''@app.route("/login", methods=["GET", "POST"])
@@ -46,6 +50,8 @@ def login():
 		else:
 			flash('Wrong password!')
 	return render_template("login.html")'''
+
+
 
 @app.route("/card",methods=["GET","POST"])
 def card():
@@ -236,7 +242,7 @@ def get_scheme():
 @app.route('/get_desc')
 def get_desc():
 	c,conn=connection()
-	c.execute("select desc from schemes where name='"+request.args.get('name')+"'")
+	c.execute("select description from schemes where name='"+request.args.get('name')+"'")
 	results=c.fetchall()
 	x=None
 	for rows in results:

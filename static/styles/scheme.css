@@ -26,3 +26,9 @@ img
 	height: 450px;
 	background-color: white;
 }
+
+.divdesc
+{
+  overflow-y: scroll;
+  height: 300px;
+}

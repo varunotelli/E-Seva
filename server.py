@@ -111,7 +111,7 @@ def getfile():
 		<body>
 			<center>
 			<img align="center" src="logo-gov.png" alt="logo-gov" width="72" height="72"/></center>
-			<h2 align="center"><b>MINISTRY OF SOCIAL JUSTICE AND EMPOWERMENT</b></h2>
+			<h2 align="center"><b>GOVERNMENT OF GUJARAT</b></h2>
 			<br><hr><h2 align="center"><b>AADHAR DETAILS</b></h2><br>
 			<table align="center" border="0" width="70%">
 				<tr>

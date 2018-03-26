@@ -6,6 +6,7 @@ from json import dump
 import xml.etree.ElementTree as ET
 from db_checker import check
 from dbconnector import connection
+from sms import send
 visible="readonly"
 class MyFPDF(FPDF, HTMLMixin):
 	pass
@@ -117,7 +118,7 @@ def getfile():
 		<body>
 			<center>
 			<img align="center" src="logo-gov.png" alt="logo-gov" width="72" height="72"/></center>
-			<h2 align="center"><b>MINISTRY OF SOCIAL JUSTICE AND EMPOWERMENT</b></h2>
+			<h2 align="center"><b>GOVERNMENT OF GUJARAT</b></h2>
 			<br><hr><h2 align="center"><b>AADHAR DETAILS</b></h2><br>
 			<table align="center" border="0" width="70%">
 				<tr>
@@ -221,6 +222,7 @@ def getfile():
 			with open('values.json', "a") as f:
 				dump(request.form, f)
 				f.write("\n")
+			send(number=mobile,scheme="Rajiv Rinn Yojana")
 			return send_file(os.getcwd()+'/'+uid+'.pdf',attachment_filename=uid+'.pdf',as_attachment=True)
 		else :
 			#flash("Already enrolled for "+y)

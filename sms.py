@@ -35,7 +35,7 @@ def send(number,scheme):
 	 
 	jession_id = str(cj).split('~')[1].split(' ')[0]
 	send_sms_url = 'http://site24.way2sms.com/smstoss.action?'
-	send_sms_data = 'ssaction=ss&Token='+jession_id+'&mobile='+'9791011603'+'&message='+message+'&msgLen=136'
+	send_sms_data = 'ssaction=ss&Token='+jession_id+'&mobile='+number+'&message='+message+'&msgLen=136'
 	opener.addheaders = [('Referer', 'http://site25.way2sms.com/sendSMS?Token='+jession_id)]
 	 
 	try:

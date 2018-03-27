@@ -29,13 +29,13 @@ def index():
 		if request.method == 'POST':
 			if request.form['password'] == 'password' and request.form['username'] == 'admin':
 				session['logged_in'] = True
-				return redirect(url_for('card'))
+				return redirect(url_for('schemeList'))
 			else:
 				flash('Wrong password!')
 				return "Logged in"
 		return render_template("login.html")
 	else:
-		return redirect(url_for('card'))
+		return redirect(url_for('schemeList'))
 
 @app.route("/scheme",methods=["GET","POST"])
 def schemeList():
@@ -53,9 +53,11 @@ def login():
 			flash('Wrong password!')
 	return render_template("login.html")'''
 
-
-
 @app.route("/card",methods=["GET","POST"])
+def card():
+	return render_template("upload.html")
+
+'''@app.route("/card",methods=["GET","POST"])
 def card():
 	if request.method=="POST":
 		if request.form["id-type"]=="aadhar-card":
@@ -64,6 +66,7 @@ def card():
 			visible=""
 			return render_template("complete.html",data="",vis=visible,error='')
 	return render_template("card.html")
+'''
 
 @app.route("/upload", methods=['GET','POST'])
 def upload():

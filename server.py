@@ -1,3 +1,4 @@
+#flag=False
 from flask import Flask,send_file,request,render_template,redirect,url_for,session,flash,jsonify
 #from pdf import create
 from fpdf import FPDF,HTMLMixin
@@ -16,7 +17,7 @@ app=Flask(__name__)
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 app.config['SESSION_TYPE'] = 'memcached'
 app.config['SECRET_KEY'] = 'super secret key'
-
+#flag=False
 @app.errorhandler(404)
 def page_not_found():
 	return "<h1>Error 404: Page not found</h1>"
@@ -66,6 +67,7 @@ def card():
 
 @app.route("/upload", methods=['GET','POST'])
 def upload():
+	global error
 	if request.method=='POST':
 		target = os.path.join(APP_ROOT, 'file/')
 		print(target)
@@ -87,7 +89,12 @@ def upload():
 
 			return render_template("complete.html",data = root.attrib,vis=visible,error='')
 		except:
+		
 			return render_template("upload.html")
+	
+
+	
+
 	return render_template("complete.html",data="",vis=visible,error='')
 
 @app.route("/getfile",methods=["POST"])
@@ -227,7 +234,9 @@ def getfile():
 			return send_file(os.getcwd()+'/'+uid+'.pdf',attachment_filename=uid+'.pdf',as_attachment=True)
 		else :
 			#flash("Already enrolled for "+y)
+			
 			return render_template("complete.html",error="Already enrolled for "+y,data='',vis=visible)
+			#return redirect(url_for('upload',data='',error="Already enrolled for "+y,vis=visible))
 	return render_template("form.htm")
 
 

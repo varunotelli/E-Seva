@@ -9,6 +9,8 @@ from db_checker import check
 from dbconnector import connection
 from sms import send
 visible="readonly"
+error=''
+flag=False
 class MyFPDF(FPDF, HTMLMixin):
 	pass
 
@@ -19,8 +21,8 @@ app.config['SESSION_TYPE'] = 'memcached'
 app.config['SECRET_KEY'] = 'super secret key'
 #flag=False
 @app.errorhandler(404)
-def page_not_found():
-	return "<h1>Error 404: Page not found</h1>"
+def page_not_found(e):
+    return "<h1>Page not found</h1>", 404
 
 
 @app.route("/", methods=["GET","POST"])
@@ -55,7 +57,14 @@ def login():
 
 @app.route("/card",methods=["GET","POST"])
 def card():
-	return render_template("upload.html")
+	global error
+	global flag
+	if flag:
+		flag=False
+	else:
+		error=''
+	print("error=",error)
+	return render_template("upload.html",error=error)
 
 '''@app.route("/card",methods=["GET","POST"])
 def card():
@@ -93,7 +102,7 @@ def upload():
 			return render_template("complete.html",data = root.attrib,vis=visible,error='')
 		except:
 		
-			return render_template("upload.html")
+			return render_template("upload.html",error=error)
 	
 
 	
@@ -237,8 +246,12 @@ def getfile():
 			return send_file(os.getcwd()+'/'+uid+'.pdf',attachment_filename=uid+'.pdf',as_attachment=True)
 		else :
 			#flash("Already enrolled for "+y)
-			
-			return render_template("complete.html",error="Already enrolled for "+y,data='',vis=visible)
+			global error
+			global flag
+			error="Already enrolled for "+y
+			flag=True
+			return redirect(url_for('card'))
+			#return render_template("complete.html",error="Already enrolled for "+y,data='',vis=visible)
 			#return redirect(url_for('upload',data='',error="Already enrolled for "+y,vis=visible))
 	return render_template("form.htm")
 

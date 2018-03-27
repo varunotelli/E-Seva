@@ -222,7 +222,8 @@ def getfile():
 			with open('values.json', "a") as f:
 				dump(request.form, f)
 				f.write("\n")
-			send(number=mobile,scheme="Rajiv Rinn Yojana")
+			print("mobile=",mobile.lstrip(' '))
+			send(number=mobile.lstrip(' '),scheme="Rajiv Rinn Yojana")
 			return send_file(os.getcwd()+'/'+uid+'.pdf',attachment_filename=uid+'.pdf',as_attachment=True)
 		else :
 			#flash("Already enrolled for "+y)

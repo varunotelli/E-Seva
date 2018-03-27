@@ -30,7 +30,7 @@ def send(number,scheme):
 	    usock = opener.open(url, data.encode('utf-8'))
 	except IOError:
 	    print("Error while logging in.")
-	    sys.exit(1)
+	    #sys.exit(1)
 	 
 	 
 	jession_id = str(cj).split('~')[1].split(' ')[0]
@@ -43,6 +43,9 @@ def send(number,scheme):
 	except IOError:
 	    print("Error while sending message")
 	    
-	sys.exit(1)
+	#sys.exit(1)
 	print("SMS has been sent.")
 	return True
+
+
+#send("8870173154","piyu")

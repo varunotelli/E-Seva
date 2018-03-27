@@ -11,6 +11,7 @@ from sms import send
 visible="readonly"
 error=''
 flag=False
+schemeName=''
 class MyFPDF(FPDF, HTMLMixin):
 	pass
 
@@ -41,7 +42,14 @@ def index():
 
 @app.route("/scheme",methods=["GET","POST"])
 def schemeList():
-	return render_template("scheme.html")
+	global error
+	global flag
+	if flag:
+		flag=False
+	else:
+		error=''
+	print("error=",error)
+	return render_template("scheme.html",error=error)
 
 
 
@@ -57,14 +65,7 @@ def login():
 
 @app.route("/card",methods=["GET","POST"])
 def card():
-	global error
-	global flag
-	if flag:
-		flag=False
-	else:
-		error=''
-	print("error=",error)
-	return render_template("upload.html",error=error)
+	return render_template("upload.html")
 
 '''@app.route("/card",methods=["GET","POST"])
 def card():
@@ -229,7 +230,8 @@ def getfile():
 	</html>
 		"""		
 	
-		x,y=check(uid,"Rajiv Rinn Yojana")
+		global schemeName
+		x,y=check(uid,schemeName)
 		print(x,y)
 		if(x==True):
 			pdf = MyFPDF()
@@ -242,7 +244,7 @@ def getfile():
 				dump(request.form, f)
 				f.write("\n")
 			print("mobile=",mobile.lstrip(' '))
-			send(number=mobile.lstrip(' '),scheme="Rajiv Rinn Yojana")
+			send(number=mobile.lstrip(' '),scheme=schemeName)
 			return send_file(os.getcwd()+'/'+uid+'.pdf',attachment_filename=uid+'.pdf',as_attachment=True)
 		else :
 			#flash("Already enrolled for "+y)
@@ -250,7 +252,7 @@ def getfile():
 			global flag
 			error="Already enrolled for "+y
 			flag=True
-			return redirect(url_for('card'))
+			return redirect(url_for('schemeList'))
 			#return render_template("complete.html",error="Already enrolled for "+y,data='',vis=visible)
 			#return redirect(url_for('upload',data='',error="Already enrolled for "+y,vis=visible))
 	return render_template("form.htm")
@@ -275,7 +277,8 @@ def get_desc():
 	x=None
 	for rows in results:
 		x=rows[0]
-
+	global schemeName
+	schemeName = request.args.get('name');
 	return jsonify(data=x)
 
 

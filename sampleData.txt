@@ -111,4 +111,5 @@ INSERT INTO USER (ID,ID_TYPE,NAME,GENDER,YEAR_OF_BIRTH,FATHER_OR_SPOUSE_NAME,ADD
 ('EFRPD6712V',1,'Govinda Devdhar',0,1989,'Mahava Devdhar','Block-8, Quarter-47,Gujarat',382120,6000,'10'),
 ('ZEDPB9012N',1,'Vineet Bhatta',0,1989,'Kanada Bhatta','Block-8, Quarter-48,Gujarat',382120,6000,'12'),
 ('RTYPM3486G',1,'Ajatasatru Mudaliyar',0,1978,'Jhanda Mudaliyar','Block-8, Quarter-49,Gujarat',382120,6000,'10,11,18'),
-('WERPV4011L',1,'Phoolan Vaknis',1,1968,'Ragunath Kamal','Block-8, Quarter-50,Gujarat',382120,6000,'2,19');
+('WERPV4011L',1,'Phoolan Vaknis',1,1968,'Ragunath Kamal','Block-8, Quarter-50,Gujarat',382120,6000,'2,19'),
+('916366101877',0,'Vasanth Kumar',0,1968,'Ekambaram','Block-8, Quarter-50,Gujarat',382120,6000,'10,11');

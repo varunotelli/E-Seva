@@ -14,98 +14,103 @@
 </head>
 
 <body>
-<!--tabs-->  
-  <ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item">
-      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Add a scheme</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Update a scheme</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Delete a scheme</a>
-    </li>
-  </ul>
-<!--add-a-scheme layout-->
-  <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-      <form>
-        <div class="form-group">
-          <label for="scheme_list_add">Scheme</label>
-          <select class="form-control" id="scheme_list_add" name="scheme_list_add">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="description_add">Description</label>
-          <textarea class="form-control" id="description_add" rows="3" name="description_add"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="eligibility_add">Eligibility</label>
-            <textarea class="form-control" id="eligibility_add" rows="3" name="eligibility_add"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="category_add">Category</label>
-            <input type="email" class="form-control" id="category_add" placeholder="Category" name="category_add">
-        </div>
-        <div class="approve-btn-box">
-            <button type="submit" class="btn btn-primary btn-lg">Add</button>
-        </div>
-      </form>
-    </div>
-<!--update-a-scheme layout-->
-    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-      <form>
-        <div class="form-group">
-          <label for="scheme_list_update">Scheme</label>
-          <select class="form-control" id="scheme_list_update" name="scheme_list_update">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="description_update">Description</label>
-          <textarea class="form-control" id="description_update" rows="3" name="description_update"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="eligibility_update">Eligibility</label>
-          <textarea class="form-control" id="eligibility_update" rows="3" name="eligibility_update"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="category_update">Category</label>
-          <input type="email" class="form-control" id="category_update" placeholder="Category" name="category_update ">
-        </div>
-        <div class="approve-btn-box">
-          <button type="submit" class="btn btn-primary btn-lg">Update</button>
-        </div>
-      </form>      
-    </div>
-<!--delete-a-scheme layout-->
-    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-      <form>
-        <div class="form-group">
-          <label for="scheme_list_delete">Scheme</label>
-          <select class="form-control" id="scheme_list_delete" name="scheme_list_delete">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </div>
-        <div class="approve-btn-box">
-            <button type="submit" class="btn btn-primary btn-lg">Delete</button>
-        </div>               
-      </form>
-    </div>
+  <div class="signout-btn-box">
+    <button type="submit" class="btn btn-danger">Sign out</button>
+  </div>
+  <div class="container my-container">
+  <!--tabs-->  
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><b style="font-size:18px;">Add a scheme</b></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><b style="font-size:18px;">Update a scheme</b></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"><b style="font-size:18px;">Delete a scheme</b></a>
+      </li>
+    </ul>
+  <!--add-a-scheme layout-->
+    <div class="tab-content my-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <form>
+          <div class="form-group">
+            <label for="scheme_list_add"><b>Scheme</b></label>
+            <select class="form-control" id="scheme_list_add" name="scheme_list_add">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="description_add"><b>Description</b></label>
+            <textarea class="form-control" id="description_add" rows="3" name="description_add"></textarea>
+          </div>
+          <div class="form-group">
+              <label for="eligibility_add"><b>Eligibility</b></label>
+              <textarea class="form-control" id="eligibility_add" rows="3" name="eligibility_add"></textarea>
+          </div>
+          <div class="form-group">
+              <label for="category_add"><b>Category</b></label>
+              <input type="email" class="form-control" id="category_add" placeholder="Category" name="category_add">
+          </div>
+          <div class="approve-btn-box">
+              <button type="submit" class="btn btn-primary btn-lg">Add</button>
+          </div>
+        </form>
+      </div>
+  <!--update-a-scheme layout-->
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <form>
+          <div class="form-group">
+            <label for="scheme_list_update"><b>Scheme</b></label>
+            <select class="form-control" id="scheme_list_update" name="scheme_list_update">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="description_update"><b>Description</b></label>
+            <textarea class="form-control" id="description_update" rows="3" name="description_update"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="eligibility_update"><b>Eligibility</b></label>
+            <textarea class="form-control" id="eligibility_update" rows="3" name="eligibility_update"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="category_update"><b>Category</b></label>
+            <input type="email" class="form-control" id="category_update" placeholder="Category" name="category_update ">
+          </div>
+          <div class="approve-btn-box">
+            <button type="submit" class="btn btn-primary btn-lg">Update</button>
+          </div>
+        </form>      
+      </div>
+  <!--delete-a-scheme layout-->
+      <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+        <form>
+          <div class="form-group">
+            <label for="scheme_list_delete"><b>Scheme</b></label>
+            <select class="form-control" id="scheme_list_delete" name="scheme_list_delete">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+          <div class="approve-btn-box">
+              <button type="submit" class="btn btn-primary btn-lg">Delete</button>
+          </div>               
+        </form>
+      </div>
 
+    </div>
   </div>
 </body>
 

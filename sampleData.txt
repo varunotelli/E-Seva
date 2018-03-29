@@ -20,6 +20,14 @@ CREATE TABLE USER(
 	SCHEMES_APPLIED VARCHAR(200) DEFAULT " "
 );
 
+CREATE TABLE EMPS(
+    USERNAME VARCHAR(20),
+    PASSWORD VARCHAR(20)
+);
+
+INSERT INTO EMPS VALUES("operator1","passwd123");
+INSERT INTO EMPS VALUES("operator2","123passwd");
+
 INSERT INTO SCHEMES (NAME,DESCRIPTION,ELIGIBILITY,CATEGORY) VALUES
 
 ("Saraswati Sadhna Yojana (Bicycle)","For SC girls cycles are provided through this scheme. A sum of Rs. 1500 is given to buy a bicycle for girls below 8th grade. For students in elementary & high school food and lodging are provided free of cost.","Enrolled as a regular student in class 8 and belonging to SC category.\nHailing from Below Poverty Line families and having the following parental income:\nAnnual income should be Less than Rs 21,206 (for applicants from urban areas)\nAnnual income should be Less than Rs 15,976 per annum (for applicants from rural areas)\nThe girl should be commuting outside of her village to attend school because of absence of a high school in her own village.","W007"),

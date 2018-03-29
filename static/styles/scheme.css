@@ -8,7 +8,7 @@ body
     font-family: 'Cinzel', serif;
   background-color: #f5f5f5;
 }
-	
+    
 img
 {
   height: 475px;
@@ -19,16 +19,22 @@ img
 
 .desc
 {
-	border-radius: 8px;
-	border: 1px solid #D3D3D3;
-	padding: 10px;
-	margin: 10px;
-	height: 450px;
-	background-color: white;
+    border-radius: 8px;
+    border: 1px solid #D3D3D3;
+    padding: 10px;
+    margin: 5px;
+    height: 225px;
+    background-color: white;
 }
 
 .divdesc
 {
   overflow-y: scroll;
-  height: 300px;
+  height: 115px;
+}
+
+.divelig
+{
+  overflow-y: scroll;
+  height: 115px;
 }

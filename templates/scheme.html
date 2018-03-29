@@ -47,8 +47,10 @@
                         data: {'name':element},
                         success : function(response) {
                             $('#scheme-name').html(element);
-                            var arr = response.data;
-                            $('#scheme-desc').html(arr);
+                            var arr1 = response.desc;
+                            $('#scheme-desc').html(arr1);
+                            var arr2 = response.elig;
+                            $('#scheme-elig').html(arr2);
                         } ,
                         error: function(error){
                             alert("Error");
@@ -85,15 +87,21 @@
                 <button type="submit" class="btn btn-primary btn-lg btn-block">Next</button>
             </form>
         </div>
-        <div class="col-sm-4 desc">
-            <center>
-                <h1 class="h3 mb-3 font-weight-normal">Scheme Description</h1>
-            </center>
-            <hr>
-            <center>
-                <h1 id="scheme-name" class="h4 mb-3 font-weight-normal"></h1>
-            </center>
-            <div id="scheme-desc" class="divdesc"></div>
+        <div class="col-sm-4">
+            <div class="desc">
+                <center>
+                    <h1 id="scheme-name" class="h3 mb-3 font-weight-normal">Scheme Description</h1>
+                </center>
+                <hr>
+                <div id="scheme-desc" class="divdesc"></div>
+            </div>
+            <div class="desc">
+                <center>
+                    <h1 class="h3 mb-3 font-weight-normal">Eligibility Criteria</h1>
+                </center>
+                <hr>
+                <div id="scheme-elig" class="divelig"></div>
+            </div>
         </div>
         
      </div>

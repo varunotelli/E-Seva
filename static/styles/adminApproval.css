@@ -1,0 +1,27 @@
+.my-table {
+  width: 100%;
+  max-width: 800px;
+  padding: 15px;
+  margin: 150px auto 0;
+}
+
+.my-checkbox-cell {
+  text-align: center
+}
+
+input[type="checkbox"]{
+  width: 20px; /*Desired width*/
+  height: 20px; /*Desired height*/
+}
+
+.approve-btn-box {
+  text-align: center;
+  margin: 40px 0 0;
+}
+
+.signout-btn-box {
+  position: relative;
+  top: 25px;
+  right: 25px;
+  text-align: right;
+}

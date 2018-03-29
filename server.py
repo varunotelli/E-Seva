@@ -287,14 +287,16 @@ def get_scheme():
 @app.route('/get_desc')
 def get_desc():
 	c,conn=connection()
-	c.execute("select description from SCHEMES where name='"+request.args.get('name')+"'")
+	c.execute("select description,eligibility from SCHEMES where name='"+request.args.get('name')+"'")
 	results=c.fetchall()
 	x=None
+	y=None
 	for rows in results:
 		x=rows[0]
+		y=rows[1]
 	global schemeName
 	schemeName = request.args.get('name');
-	return jsonify(data=x)
+	return jsonify(desc=x,elig=y)
 
 @app.route('/logout')
 def logout():

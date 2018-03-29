@@ -2,7 +2,7 @@ from dbconnector import connection
 def check(uid,name):
 	z=None
 	c,conn=connection()
-	row_count = c.execute("select schemes_applied from user where id='"+str(uid)+"'")
+	row_count = c.execute("select schemes_applied from USER where id='"+str(uid)+"'")
 	if row_count>0:
 
 		results=c.fetchall()
@@ -14,14 +14,14 @@ def check(uid,name):
 
 		for s in schemes:
 			print(s)
-			c.execute("select * from schemes where id="+s)
+			c.execute("select * from SCHEMES where id="+s)
 			results=c.fetchall()
 			for row in results:
 				temp[row[1]]=row[4]
 
 		print(temp)
 
-		c.execute("select category from schemes where name='"+name+"'")
+		c.execute("select category from SCHEMES where name='"+name+"'")
 		results=c.fetchall()
 		for row in results:
 			z=row[0]
@@ -44,4 +44,17 @@ def check(uid,name):
 	else:
 		return True,''
 
-
+def authuser(username, password):
+	c,conn = connection()
+	c.execute("select password from EMPS where username = '"+username+"'")
+	results = c.fetchall()
+	for row in results:
+		z = row[0]
+	'''if password == passwd:
+		return True
+	else:
+		return False'''
+	if(z == password):
+		return True
+	else:
+		return False

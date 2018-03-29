@@ -5,7 +5,7 @@ from fpdf import FPDF,HTMLMixin
 import os
 from json import dump
 import xml.etree.ElementTree as ET
-from db_checker import check
+from db_checker import check, authuser
 from dbconnector import connection
 from sms import send
 visible="readonly"
@@ -30,12 +30,20 @@ def page_not_found(e):
 def index():
 	if not session.get('logged_in'):
 		if request.method == 'POST':
-			if request.form['password'] == 'password' and request.form['username'] == 'admin':
+			username = request.form['username']
+			password = request.form['password']
+			#if request.form['password'] == 'password' and request.form['username'] == 'admin':
+			if authuser(username,password) == True:
 				session['logged_in'] = True
+
+				session['user'] = username
+
 				return redirect(url_for('schemeList'))
+
 			else:
 				flash('Wrong password!')
-				return "Logged in"
+				#debug
+			return str(username + " " + password)	
 		return render_template("login.html")
 	else:
 		return redirect(url_for('schemeList'))
@@ -261,7 +269,7 @@ def getfile():
 @app.route('/get_scheme')
 def get_scheme():
 	c,conn=connection()
-	c.execute("select name from schemes")
+	c.execute("select name from SCHEMES")
 	results=c.fetchall()
 	arr=[]
 	for rows in results:
@@ -272,7 +280,7 @@ def get_scheme():
 @app.route('/get_desc')
 def get_desc():
 	c,conn=connection()
-	c.execute("select description from schemes where name='"+request.args.get('name')+"'")
+	c.execute("select description from SCHEMES where name='"+request.args.get('name')+"'")
 	results=c.fetchall()
 	x=None
 	for rows in results:
@@ -280,6 +288,12 @@ def get_desc():
 	global schemeName
 	schemeName = request.args.get('name');
 	return jsonify(data=x)
+
+@app.route('/logout')
+def logout():
+	session['logged_in'] = False
+	session['user'] = None
+	return redirect(url_for('index'))
 
 
 

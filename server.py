@@ -42,22 +42,26 @@ def index():
 
 			else:
 				flash('Wrong password!')
+				return redirect(url_for('index'))
 				#debug
-			return str(username + " " + password)	
+				#return str(username + " " + password)	
 		return render_template("login.html")
 	else:
 		return redirect(url_for('schemeList'))
 
 @app.route("/scheme",methods=["GET","POST"])
 def schemeList():
-	global error
-	global flag
-	if flag:
-		flag=False
+	if session['logged_in']:
+		global error
+		global flag
+		if flag:
+			flag=False
+		else:
+			error=''
+		print("error=",error)
+		return render_template("scheme.html",error=error)
 	else:
-		error=''
-	print("error=",error)
-	return render_template("scheme.html",error=error)
+		return redirect(url_for('index'))
 
 
 
@@ -73,7 +77,10 @@ def login():
 
 @app.route("/card",methods=["GET","POST"])
 def card():
-	return render_template("upload.html")
+	if session['logged_in']:
+		return render_template("upload.html")
+	else:
+		return redirect(url_for('index'))
 
 '''@app.route("/card",methods=["GET","POST"])
 def card():

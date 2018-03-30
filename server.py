@@ -146,7 +146,7 @@ def getfile():
 		inc=request.form["inc"]
 
 		print("uid="+uid)
-
+		global schemeName
 		html = """
 		<!DOCTYPE html>
 		<html lang="en">
@@ -251,7 +251,7 @@ def getfile():
 	</html>
 		"""		
 	
-		global schemeName
+		
 		x,y=check(uid,schemeName)
 		print(x,y)
 		if(x==True):

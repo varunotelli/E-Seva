@@ -46,16 +46,18 @@
                     var element = this.value;
                     $.ajax({
                         type : 'GET',
-                        url : '/get_desc',
+                        url : '/get_desc_admin',
                         dataType : "json",
                         data: {'name':element},
                         success : function(response) {
                             $('#scheme-name').html(element);
                             $('#scheme-elig-header').html("Eligibility Criteria");
-                            var arr1 = response.desc;
-                            $('#scheme-desc').html(arr1);
-                            var arr2 = response.elig;
-                            $('#scheme-elig').html(arr2);
+                            var arr1 = response.id + ') ';
+                            $('#scheme-id').html(arr1);
+                            var arr2 = response.desc;
+                            $('#scheme-desc').html(arr2);
+                            var arr3 = response.elig;
+                            $('#scheme-elig').html(arr3);
                         } ,
                         error: function(error){
                             alert("Error");
@@ -125,8 +127,10 @@
               <hr>
               <div class="divdesc">
                 <center>
-                  <h1 id="scheme-name" class="h3 mb-3 font-weight-normal"></h1>
+                  <h1 class="h3 mb-3 font-weight-normal" style="display:inline;" id="scheme-id"></h1>
+                  <h1 id="scheme-name" class="h3 mb-3 font-weight-normal" style="display:inline;"></h1>
                 </center>
+                <br>
                 <div id="scheme-desc"></div>
                 <center>
                   <h1 id="scheme-elig-header" class="h3 mb-3 font-weight-normal"></h1>

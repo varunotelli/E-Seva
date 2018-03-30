@@ -302,6 +302,22 @@ def get_desc():
 	schemeName = request.args.get('name');
 	return jsonify(desc=x,elig=y)
 
+@app.route('/get_desc_admin')
+def get_desc_admin():
+	c,conn=connection()
+	c.execute("select id,description,eligibility from SCHEMES where name='"+request.args.get('name')+"'")
+	results=c.fetchall()
+	x=None
+	y=None
+	z=None
+	for rows in results:
+		x=rows[0]
+		y=rows[1]
+		z=rows[2]
+	global schemeName
+	schemeName = request.args.get('name');
+	return jsonify(id=x,desc=y,elig=z)
+
 @app.route('/logout')
 def logout():
 	session['logged_in'] = False

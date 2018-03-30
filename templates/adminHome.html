@@ -7,23 +7,43 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Admin Home</title>
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/adminHome.css') }}">
 </head>
 
 <body>
+  <script>    
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip(); 
+    });
+
+    function f1() {
+      console.log('hello');
+      let scheme_name = document.getElementById('scheme_add').value;
+      console.log(scheme_name);
+      if (scheme_name.length == 0) {
+        console.log('hello 2');
+        $('#scheme_add').tooltip('show');
+      } else {
+        $('#scheme_add').tooltip('hide');
+      }
+    }
+  </script>
   <form action="/adminlogout">
   <div class="signout-btn-box">
-    <button type="submit" class="btn btn-danger pull-right">Sign out</button>
+    <button type="submit" class="btn btn-danger">Sign out</button>
   </div>
   </form>
   <div class="container my-container">
   <!--tabs-->  
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item">
-        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><b style="font-size:18px;">Add a scheme</b></a>
+        <a class="nav-link active" id="view-tab" data-toggle="tab" href="#view" role="tab" aria-controls="view" aria-selected="true"><b style="font-size:18px;">View schemes</b></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false"><b style="font-size:18px;">Add a scheme</b></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><b style="font-size:18px;">Update a scheme</b></a>
@@ -32,59 +52,96 @@
         <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"><b style="font-size:18px;">Delete a scheme</b></a>
       </li>
     </ul>
-  <!--add-a-scheme layout-->
-    <div class="tab-content my-content" id="myTabContent">
-      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+  
+    <div class="tab-content" id="myTabContent">
+
+      <div class="tab-pane fade show active" id="view" role="tabpanel" aria-labelledby="view-tab">
+        <div class="row">
+          <div class="col-sm-6">
+              <form>
+                <div class="form-group" style="width:100%; margin-top:55px;">
+                  <select class="form-control" id="scheme_list_update" name="scheme_list_update" onchange="this.form.submit()">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+              </form>
+          </div>
+          <div class="col-sm-6">
+            <div class="desc" style="margin-top:40px;">
+              <center>
+                <h1 class="h3 mb-3 font-weight-normal">Scheme Description</h1>
+              </center>
+              <hr>
+              <div class="divdesc">
+                <center>
+                  <h1 id="scheme-name" class="h3 mb-3 font-weight-normal"></h1>
+                </center>
+                <div id="scheme-desc"></div>
+                <center>
+                  <h1 id="scheme-elig-header" class="h3 mb-3 font-weight-normal"></h1>
+                </center>
+                <div id="scheme-elig"></div>
+              </div>                  
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--add-a-scheme layout-->
+
+      <div class="tab-pane fade my-content" id="home" role="tabpanel" aria-labelledby="home-tab">
         <form action="/addscheme" method="post">
           <div class="form-group">
             <label for="scheme_add"><b>Scheme</b></label>
-            <input type="text" class="form-control" id="scheme_add" placeholder="Scheme" name="scheme_add">
+            <input type="text" class="form-control" id="scheme_add" placeholder="Scheme" name="scheme_add" onblur="f1()">
           </div>
           <div class="form-group">
             <label for="description_add"><b>Description</b></label>
-            <textarea class="form-control" id="description_add" rows="3" name="description_add"></textarea>
+            <textarea class="form-control" id="description_add" rows="3" name="description_add" required></textarea>
           </div>
           <div class="form-group">
               <label for="eligibility_add"><b>Eligibility</b></label>
-              <textarea class="form-control" id="eligibility_add" rows="3" name="eligibility_add"></textarea>
+              <textarea class="form-control" id="eligibility_add" rows="3" name="eligibility_add" required></textarea>
           </div>
           <div class="form-group">
               <label for="category_add"><b>Category</b></label>
-              <input type="text" class="form-control" id="category_add" placeholder="Category" name="category_add">
+              <input type="text" class="form-control" id="category_add" placeholder="Category" name="category_add" required>
           </div>
           <div class="approve-btn-box">
-              <button type="submit" class="btn btn-primary btn-lg">Add</button>
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#add_confirmation">Add</button>
           </div>
-
+          
           <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  ...
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
+          <div class="modal fade my-content" id="add_confirmation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    Add mentioned scheme?
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                    <input type="submit" class="btn btn-primary" id="add_ok_btn" data-toggle="modal" data-target="#add_status" value="OK">
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          
         </form>
       </div>
   <!--update-a-scheme layout-->
-      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <div class="tab-pane fade my-content" id="profile" role="tabpanel" aria-labelledby="profile-tab">
         <form action="/updatescheme" method="post">
           <div class="form-group">
             <label for="scheme_list_update"><b>Scheme</b></label>
-            <input type="text" name="name_update" class="form-controlr">
+            <input type="text" name="name_update" class="form-control" placeholder="Scheme"/>
           </div>
           <div class="form-group">
             <label for="description_update"><b>Description</b></label>
@@ -99,20 +156,62 @@
             <input type="text" class="form-control" id="category_update" placeholder="Category" name="category_update">
           </div>
           <div class="approve-btn-box">
-            <button type="submit" class="btn btn-primary btn-lg">Update</button>
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#update_confirmation">Update</button>
+          </div>
+
+          <!-- Modal -->
+          <div class="modal fade my-content" id="update_confirmation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Update</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  Update selected scheme?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                  <input type="submit" class="btn btn-primary" id="add_ok_btn" value="OK">
+                </div>
+              </div>
+            </div>
           </div>
         </form>      
       </div>
   <!--delete-a-scheme layout-->
-      <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+      <div class="tab-pane fade my-content" id="contact" role="tabpanel" aria-labelledby="contact-tab">
         <form method="post" action="/deletescheme">
           <div class="form-group">
             <label for="scheme_list_delete"><b>Scheme</b></label>
             <input type="text" name="id_delete" class="form-control">
           </div>
           <div class="approve-btn-box">
-              <button type="submit" class="btn btn-primary btn-lg">Delete</button>
-          </div>               
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#delete_confirmation">Delete</button>
+          </div>
+          
+          <!-- Modal -->
+          <div class="modal fade my-content" id="delete_confirmation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  Delete selected scheme?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                  <input type="submit" class="btn btn-primary" id="add_ok_btn" value="OK">
+                </div>
+              </div>
+            </div>
+          </div>
         </form>
       </div>
 

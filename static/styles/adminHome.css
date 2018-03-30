@@ -20,3 +20,15 @@
   max-width: 1000px;
   margin: 25px auto;
 }
+
+.desc {
+  border-radius: 8px;
+  border: 1px solid #D3D3D3;
+  padding: 10px;
+  height: 450px;
+}
+
+.divdesc {
+  overflow-y: scroll;
+  height: 330px;
+}

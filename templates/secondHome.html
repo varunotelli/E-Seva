@@ -11,10 +11,10 @@
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/secondHome.css') }}">
 	</head>
 	<body class="text-center">
-		<form class="form-signin">
+		<form class="form-signin" method="post">
 			<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-			<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-			<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+			<input type="text" id="inputEmail" class="form-control" placeholder="Email address" name="uname" required autofocus>
+			<input type="password" id="inputPassword" class="form-control" placeholder="Password" name="passwd" required>
 			<div class="checkbox mb-3">
 				<label><input type="checkbox" value="remember-me"> Remember me</label>
 			</div>

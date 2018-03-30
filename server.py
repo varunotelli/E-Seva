@@ -5,7 +5,7 @@ from fpdf import FPDF,HTMLMixin
 import os
 from json import dump
 import xml.etree.ElementTree as ET
-from db_checker import check, authuser,add_scheme,update_scheme
+from db_checker import check, authuser,add_scheme,update_scheme,delete_scheme
 from dbconnector import connection
 from sms import send
 visible="readonly"
@@ -369,6 +369,15 @@ def updatescheme():
 	else:
 		return redirect(url_for('admin'))
 
+@app.route('/deletescheme', methods=["GET","POST"])
+def deletescheme():
+	if session.get('admin'):
+		if request.method == 'POST':
+			id1 = request.form['id_delete']
+			delete_scheme(id1)
+			return redirect(url_for('adminhome'))
+	else:
+		return redirect(url_for('admin'))
 
 @app.route('/adminlogout')
 def adminlogout():

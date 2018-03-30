@@ -105,16 +105,10 @@
       </div>
   <!--delete-a-scheme layout-->
       <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-        <form>
+        <form method="post" action="/deletescheme">
           <div class="form-group">
             <label for="scheme_list_delete"><b>Scheme</b></label>
-            <select class="form-control" id="scheme_list_delete" name="scheme_list_delete">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
+            <input type="text" name="id_delete" class="form-control">
           </div>
           <div class="approve-btn-box">
               <button type="submit" class="btn btn-primary btn-lg">Delete</button>

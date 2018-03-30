@@ -95,3 +95,9 @@ def update_scheme(name, description, eligibility, category):
 """, (d,e,ca,name))
 	conn.commit()
 	c.close()
+
+def delete_scheme(id1):
+	c,conn = connection()
+	ct = c.execute("DELETE FROM SCHEMES WHERE id="+id1)
+	conn.commit()
+	c.close()

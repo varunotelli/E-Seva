@@ -71,21 +71,27 @@ def add_scheme(name, description, eligibility, category):
 	c.close()
 
 def update_scheme(name, description, eligibility, category):
+	#return "Update Function"
 	c,conn = connection()
-	ct = c.execute("select * from SCHEMES from where name = %s",(esc(name)))
+	ct = c.execute("select * from SCHEMES where name = (%s)",(esc(name),))
 	results = c.fetchall()
 	for row in results:
-		n = row[0]
-		d = row[1]
-		e = row[2]
-		c = row[3]
+		#n = row[1]
+		d = row[2]
+		e = row[3]
+		ca = row[4]
 
 	if description != "" and description is not None:
 		d = description
 	if eligibility != "" and eligibility is not None:
 		e = eligibility
 	if category != "" and category is not None:
-		c = category
+		ca = category
 
-	rt = c.execute("update table SCHEMES set description = %s, eligibility = %s, category = %s WHERE name = %s", (esc(d),esc(e),esc(c),esc(n)))
+	rt = c.execute ("""
+   UPDATE SCHEMES
+   SET description=%s, eligibility=%s, category=%s
+   WHERE name=%s
+""", (d,e,ca,name))
+	conn.commit()
 	c.close()

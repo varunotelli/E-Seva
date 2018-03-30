@@ -3,8 +3,8 @@ import http.cookiejar
 from getpass import getpass
 import sys
 def send(number,scheme):
-	username="8870173154"
-	passwd="kumaresh"
+	username="9791011603"
+	passwd="D5222M"
 	message="You have successfully been enrolled for "+scheme
 
 	''' 

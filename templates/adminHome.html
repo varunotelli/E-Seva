@@ -10,13 +10,13 @@
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <link rel="stylesheet" type="text/css" href="adminHome.css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/adminHome.css') }}">
 </head>
 
 <body>
   <form action="/adminlogout">
   <div class="signout-btn-box">
-    <button type="submit" class="btn btn-danger">Sign out</button>
+    <button type="submit" class="btn btn-danger pull-right">Sign out</button>
   </div>
   </form>
   <div class="container my-container">
@@ -96,7 +96,7 @@
           </div>
           <div class="form-group">
             <label for="category_update"><b>Category</b></label>
-            <input type="text" class="form-control" id="category_update" placeholder="Category" name="category_update ">
+            <input type="text" class="form-control" id="category_update" placeholder="Category" name="category_update">
           </div>
           <div class="approve-btn-box">
             <button type="submit" class="btn btn-primary btn-lg">Update</button>

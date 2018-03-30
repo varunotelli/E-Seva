@@ -83,7 +83,7 @@ def card():
 '''@app.route("/card",methods=["GET","POST"])
 def card():
 	if request.method=="POST":
-		if request.form["id-type"]=="aadhar-card":
+		if request.form["id-type"]=="aadhaar-card":
 			return render_template("upload.html")
 		else:
 			visible=""
@@ -150,9 +150,9 @@ def getfile():
 		<html lang="en">
 		<body>
 			<center>
-			<img align="center" src="logo-gov.png" alt="logo-gov" width="72" height="72"/></center>
-			<h2 align="center"><b>GOVERNMENT OF GUJARAT</b></h2>
-			<br><hr><h2 align="center"><b>AADHAR DETAILS</b></h2><br>
+			<img align="center" src="logo-gov.jpg" alt="logo-gov" width="50" height="72"/></center>
+			<h2 align="center"><b>MINISTRY OF SOCIAL JUSTICE AND EMPOWERMENT</b></h2>
+			<br><hr><h2 align="center"><b>AADHAAR DETAILS</b></h2><br>
 			<table align="center" border="0" width="70%">
 			<tr>
 					<td width="10%"></td>

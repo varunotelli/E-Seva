@@ -101,3 +101,9 @@ def delete_scheme(id1):
 	ct = c.execute("DELETE FROM SCHEMES WHERE id="+id1)
 	conn.commit()
 	c.close()
+
+def insert_appn(uid,id_type,name,gender,yob,care_of,address,pincode,income,phone,schemes_applied):
+	c,conn=connection()
+	ins = c.execute("insert into APPN (id,id_type,name,gender,year_of_birth,father_or_spouse_name,address,pincode,income,phone,schemes_applied) values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);",(esc(uid),esc(str(id_type)),esc(name),esc(str(gender)),esc(str(yob)),esc(care_of),esc(address),esc(pincode),esc(income),esc(phone),esc(schemes_applied)))
+	conn.commit()
+	c.close()

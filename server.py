@@ -5,7 +5,7 @@ from fpdf import FPDF,HTMLMixin
 import os
 from json import dump
 import xml.etree.ElementTree as ET
-from db_checker import check, authuser,add_scheme,update_scheme,delete_scheme
+from db_checker import check, authuser,add_scheme,update_scheme,delete_scheme,insert_appn
 from dbconnector import connection
 from sms import send
 visible="readonly"
@@ -193,13 +193,13 @@ def getfile():
 				<tr>
 					<td width="10%"></td>
 					<td width="40%"><b>House : </b></td>
-					<td width="50%" align="right">"""+lm+"""</td>
+					<td width="50%" align="right">"""+loc+"""</td>
 				</tr>
 				<br>
 				<tr>
 					<td width="10%"></td>
 					<td width="40%"><b>Landmark : </b></td>
-					<td width="50%" align="right">"""+loc+"""</td>
+					<td width="50%" align="right">"""+lm+"""</td>
 				</tr>
 				<br>
 				<tr>
@@ -264,6 +264,12 @@ def getfile():
 				f.write("\n")
 			print("mobile=",mobile.lstrip(' '))
 			send(number=mobile.lstrip(' '),scheme=schemeName)
+			if(gender=="M"):
+				g=0
+			else:
+				g=1
+			addr = loc+" "+lm+" "+vtc+" "+po+" "+dist+" "+state
+			insert_appn(uid,0,name,g,yob,co,addr,pc,inc,mobile,schemeName)
 			return send_file(os.getcwd()+'/'+uid+'.pdf',attachment_filename=uid+'.pdf',as_attachment=True)
 		else :
 			#flash("Already enrolled for "+y)

@@ -1,6 +1,6 @@
 body 
 {
-  font-family: 'Verdana';
+  font-family: 'Cinzel';
   background-color: #f5f5f5;
 }
 .head
@@ -45,14 +45,16 @@ img
   z-index: 2;
 }
 
-.form-signin input[type="email"] {
+.form-signin input[type="text"] {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
+  font-family: 'Verdana';
 }
 
 .form-signin input[type="password"] {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+  font-family: 'Verdana';
 }

@@ -5,7 +5,7 @@ from fpdf import FPDF,HTMLMixin
 import os
 from json import dump
 import xml.etree.ElementTree as ET
-from db_checker import check, authuser,add_scheme
+from db_checker import check, authuser,add_scheme,update_scheme
 from dbconnector import connection
 from sms import send
 visible="readonly"
@@ -351,6 +351,21 @@ def addscheme():
 		category = request.form['category_add']
 		add_scheme(name,description,eligibility,category)
 		return redirect(url_for('adminhome'))
+	else:
+		return redirect(url_for('admin'))
+
+@app.route('/updatescheme', methods=["GET","POST"])
+def updatescheme():
+	if session.get('admin'):
+		if request.method == 'POST':
+			name = request.form['name_update']
+			description = request.form['description_update']
+			eligibility = request.form['eligibility_update']
+			category = request.form['category_update']
+			update_scheme(name,description,eligibility,category)
+			return redirect(url_for('adminhome'))
+		else:
+			return "Not Post"
 	else:
 		return redirect(url_for('admin'))
 

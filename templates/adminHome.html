@@ -81,16 +81,10 @@
       </div>
   <!--update-a-scheme layout-->
       <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-        <form>
+        <form action="/updatescheme" method="post">
           <div class="form-group">
             <label for="scheme_list_update"><b>Scheme</b></label>
-            <select class="form-control" id="scheme_list_update" name="scheme_list_update">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
+            <input type="text" name="name_update" class="form-controlr">
           </div>
           <div class="form-group">
             <label for="description_update"><b>Description</b></label>
@@ -102,7 +96,7 @@
           </div>
           <div class="form-group">
             <label for="category_update"><b>Category</b></label>
-            <input type="email" class="form-control" id="category_update" placeholder="Category" name="category_update ">
+            <input type="text" class="form-control" id="category_update" placeholder="Category" name="category_update ">
           </div>
           <div class="approve-btn-box">
             <button type="submit" class="btn btn-primary btn-lg">Update</button>

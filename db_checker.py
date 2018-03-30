@@ -69,5 +69,23 @@ def add_scheme(name, description, eligibility, category):
 	ins = c.execute("insert into SCHEMES (name, description, eligibility, category) values (%s,%s,%s,%s);",(esc(name),esc(description),esc(eligibility),esc(category)))
 	conn.commit()
 	c.close()
-	
 
+def update_scheme(name, description, eligibility, category):
+	c,conn = connection()
+	ct = c.execute("select * from SCHEMES from where name = %s",(esc(name)))
+	results = c.fetchall()
+	for row in results:
+		n = row[0]
+		d = row[1]
+		e = row[2]
+		c = row[3]
+
+	if description != "" and description is not None:
+		d = description
+	if eligibility != "" and eligibility is not None:
+		e = eligibility
+	if category != "" and category is not None:
+		c = category
+
+	rt = c.execute("update table SCHEMES set description = %s, eligibility = %s, category = %s WHERE name = %s", (esc(d),esc(e),esc(c),esc(n)))
+	c.close()

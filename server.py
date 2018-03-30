@@ -40,12 +40,10 @@ def index():
 
 				return redirect(url_for('schemeList'))
 
-			else:
-				flash('Wrong password!')
-				return redirect(url_for('index'))
+			return render_template("login.html",error="Wrong Username or password")
 				#debug
 				#return str(username + " " + password)	
-		return render_template("login.html")
+		return render_template("login.html",error='')
 	else:
 		return redirect(url_for('schemeList'))
 

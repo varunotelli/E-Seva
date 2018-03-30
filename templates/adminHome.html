@@ -10,10 +10,62 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/adminHome.css') }}">
 </head>
 
 <body>
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                type : 'GET',
+                url : '/get_scheme',
+                dataType: "json",
+                success: function (response) {
+                    var arr = response.data;
+                    $('#scheme_list_update').append($('<option>').text("").attr('value',"")); 
+                    for(i in arr)
+                    { 
+                        $('#scheme_list_update').append($('<option>').text(arr[i]).attr('value', arr[i]));        
+                    }
+
+                },
+                error: function (result) {
+                alert("Error");
+                }
+            });
+
+            $('select').on('change', function() {
+                    var element = this.value;
+                    $.ajax({
+                        type : 'GET',
+                        url : '/get_desc',
+                        dataType : "json",
+                        data: {'name':element},
+                        success : function(response) {
+                            $('#scheme-name').html(element);
+                            $('#scheme-elig-header').html("Eligibility Criteria");
+                            var arr1 = response.desc;
+                            $('#scheme-desc').html(arr1);
+                            var arr2 = response.elig;
+                            $('#scheme-elig').html(arr2);
+                        } ,
+                        error: function(error){
+                            alert("Error");
+                        }
+                    });
+            })
+        });
+        
+    </script>
+
   <script>    
     $(document).ready(function(){
       $('[data-toggle="tooltip"]').tooltip(); 
@@ -58,14 +110,9 @@
       <div class="tab-pane fade show active" id="view" role="tabpanel" aria-labelledby="view-tab">
         <div class="row">
           <div class="col-sm-6">
-              <form>
+              <form action="{{ url_for('card') }}">
                 <div class="form-group" style="width:100%; margin-top:55px;">
-                  <select class="form-control" id="scheme_list_update" name="scheme_list_update" onchange="this.form.submit()">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                  <select class="form-control" id="scheme_list_update" name="scheme_list_update"  style="height:35px;">
                   </select>
                 </div>
               </form>

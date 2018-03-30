@@ -6,174 +6,219 @@
     <title>Avoidance of duplication of beneficiaries - Aadhar Details</title>
 
     <!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-	<!-- jQuery library -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-	<!-- Latest compiled JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/complete.css') }}">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/complete.css') }}">
+    <script>
+        $(document).ready(function(){
+            function redirect(){
+                var url = "/scheme";
+                $(location).attr('href',url);
+            }
+            var that = this;
+            setTimeout(function(){
+                $('#redirect').click(function(){
+                    setTimeout(redirect, 3000);
+                });
+            },2000);
+            
+        });
+    </script>
 </head>
 <body class="container-fluid">
-	<div class="page-header row head">
+    <div class="page-header row head">
         <h1>Avoidance of duplication of beneficiaries</h1>
         <form action="\logout">
             <button class="btn btn-danger pull-right logout">Logout</button>    
         </form>
      </div>
-	<form id="input-form" action="/getfile" method="POST" enctype="multipart/form-data" class="form-horizontal form-signin">
-		<div class="row">
-		<div class="col-sm-3">
+    <form id="input-form" action="/getfile" method="POST" enctype="multipart/form-data" class="form-horizontal form-signin">
+        <div class="row">
+        <div class="col-sm-3">
             <img src="/static/img/GujaratEmblem.png">
         </div>
         <div class="col-sm-9">
-        	<div class="row">
-        		<div class="col-sm-5"></div>
-        		<div class="col-sm-4">
-        			<h1 class="h3 mb-2 font-weight-normal"><b>Aadhar Card Details</b></h1>
-        		</div>
-        		<div class="col-sm-3"></div>
-        	</div>
-        	<center><h2 style="color:red;">{{error}}</h2></center>
-        	<div class="row">
+            <div class="row">
+                <div class="col-sm-5"></div>
+                <div class="col-sm-4">
+                    <h1 class="h3 mb-2 font-weight-normal"><b>Aadhar Card Details</b></h1>
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+            <center><h2 style="color:red;">{{error}}</h2></center>
+            <div class="row">
 
-        		<div class="col-sm-6">
-        			<div class="form-group">
-						<label class="control-label col-sm-5">UID : </label>
-						<div class="col-sm-7">
-							<input type="text" name="uid" value="{{data['uid']}}" {{vis}} class="form-control">
-						</div>
-					</div>
-        		</div>
-        		<div class="col-sm-6">
-        			<div class="form-group">
-						<label class="control-label col-sm-5">Village/Town/City : </label>
-						<div class="col-sm-7">
-							<input type="text" name="vtc" value="{{data['vtc']}}" {{vis}} class="form-control">
-						</div>
-					</div>
-        		</div>
-        	</div>
-        	<div class="row">
-        		<div class="col-sm-6">
-        			<div class="form-group">
-						<label class="control-label col-sm-5">Name : </label>
-						<div class="col-sm-7">
-							<input type="text" name="name" value="{{data['name']}}" {{vis}} class="form-control">
-						</div>
-					</div>
-        		</div>
-        		<div class="col-sm-6">
-        			<div class="form-group">
-						<label class="control-label col-sm-5">Post Office Name : </label>
-						<div class="col-sm-7">
-							<input type="text" name="po" value="{{data['po']}}" {{vis}} class="form-control">
-						</div>
-					</div>
-        		</div>
-        	</div>
-        	<div class="row">
-        		<div class="col-sm-6">
-        			<div class="form-group">
-						<label class="control-label col-sm-5">Gender: </label>
-						<div class="col-sm-7">
-							<input type="text" name="gender" value="{{data['gender']}}" {{vis}} class="form-control">
-						</div>
-					</div>
-        		</div>
-        		<div class="col-sm-6">
-        			<div class="form-group">
-						<label class="control-label col-sm-5">District : </label>
-						<div class="col-sm-7">
-							<input type="text" name="dist" value="{{data['dist']}}" {{vis}} class="form-control">
-						</div>
-					</div>
-        		</div>
-        	</div>
-        	<div class="row">
-        		<div class="col-sm-6">
-        			<div class="form-group">
-						<label class="control-label col-sm-5">Year of Birth :</label>
-						<div class="col-sm-7">
-							<input type="text" name="yob" value="{{data['yob']}}" {{vis}} class="form-control">
-						</div>
-					</div>
-        		</div>
-        		<div class="col-sm-6">
-        			<div class="form-group">
-						<label class="control-label col-sm-5">State : </label>
-						<div class="col-sm-7">
-							 <input type="text" name="state" value="{{data['state']}}" {{vis}} class="form-control">
-						</div>
-					</div>
-        		</div>
-        	</div>
-        	<div class="row">
-        		<div class="col-sm-6">
-        			<div class="form-group">
-						<label class="control-label col-sm-5">Care of : </label>
-						<div class="col-sm-7">
-							<input type="text" name="co" value="{{data['co']}}" {{vis}} class="form-control">
-						</div>
-					</div> 
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label col-sm-5">UID : </label>
+                        <div class="col-sm-7">
+                            <input type="text" name="uid" value="{{data['uid']}}" {{vis}} class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label col-sm-5">Village/Town/City : </label>
+                        <div class="col-sm-7">
+                            <input type="text" name="vtc" value="{{data['vtc']}}" {{vis}} class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label col-sm-5">Name : </label>
+                        <div class="col-sm-7">
+                            <input type="text" name="name" value="{{data['name']}}" {{vis}} class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label col-sm-5">Post Office Name : </label>
+                        <div class="col-sm-7">
+                            <input type="text" name="po" value="{{data['po']}}" {{vis}} class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label col-sm-5">Gender: </label>
+                        <div class="col-sm-7">
+                            <input type="text" name="gender" value="{{data['gender']}}" {{vis}} class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label col-sm-5">District : </label>
+                        <div class="col-sm-7">
+                            <input type="text" name="dist" value="{{data['dist']}}" {{vis}} class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label col-sm-5">Year of Birth :</label>
+                        <div class="col-sm-7">
+                            <input type="text" name="yob" value="{{data['yob']}}" {{vis}} class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label col-sm-5">State : </label>
+                        <div class="col-sm-7">
+                             <input type="text" name="state" value="{{data['state']}}" {{vis}} class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label col-sm-5">Care of : </label>
+                        <div class="col-sm-7">
+                            <input type="text" name="co" value="{{data['co']}}" {{vis}} class="form-control">
+                        </div>
+                    </div> 
 
-        		</div>
-        		<div class="col-sm-6">
-        			<div class="form-group">
-						<label class="control-label col-sm-5">Pincode : </label>
-						<div class="col-sm-7">
-							<input type="text" name="pc" value="{{data['pc']}}" {{vis}} class="form-control">
-						</div>
-					</div>
-        		</div>
-        	</div>
-        	<div class="row">
-        		<div class="col-sm-6">
-        			<div class="form-group">
-						<label class="control-label col-sm-5">House : </label>
-						<div class="col-sm-7">
-							<input type="text" name="lm" value="{{data['lm']}}" {{vis}} class="form-control">
-						</div>
-					</div>        			
-        		</div>
-        		<div class="col-sm-6">
-        			<div class="form-group">
-						<label class="control-label col-sm-5">Income : </label>
-						<div class="col-sm-7">
-							<input type="text" name="inc" value="" type="number" placeholder="Enter your income" required  class="form-control">
-						</div>
-					</div>
-        		</div>
-        	</div>
-        	<div class="row">
-        		<div class="col-sm-6">
-        			<div class="form-group">
-						<label class="control-label col-sm-5">Landmark : </label>
-						<div class="col-sm-7">
-							<input type="text" name="loc" value="{{data['loc']}}" {{vis}} class="form-control">
-						</div>
-					</div>
-        		</div>
-        		<div class="col-sm-6">
-        			<div class="form-group">
-						<label class="control-label col-sm-5">Phone Number : </label>
-						<div class="col-sm-7">
-							<input type="text" name="mobile" value="" type="number" placeholder="Enter your phone number" required class="form-control">
-						</div>
-					</div>
-        		</div>
-        	</div>
-        	<br>
-        	<div class="row">
-        		<div class="col-sm-3"></div>
-        		<div class="col-sm-6">
-        			<input type="submit" class="btn btn-primary btn-block btn-lg">
-        		</div>
-        		<div class="col-sm-3"></div>
-        	</div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label col-sm-5">Pincode : </label>
+                        <div class="col-sm-7">
+                            <input type="text" name="pc" value="{{data['pc']}}" {{vis}} class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label col-sm-5">House : </label>
+                        <div class="col-sm-7">
+                            <input type="text" name="lm" value="{{data['lm']}}" {{vis}} class="form-control">
+                        </div>
+                    </div>                  
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label col-sm-5">Income : </label>
+                        <div class="col-sm-7">
+                            <input type="text" name="inc" value="" type="number" placeholder="Enter your income" required  class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label col-sm-5">Landmark : </label>
+                        <div class="col-sm-7">
+                            <input type="text" name="loc" value="{{data['loc']}}" {{vis}} class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label col-sm-5">Phone Number : </label>
+                        <div class="col-sm-7">
+                            <input type="text" name="mobile" value="" type="number" placeholder="Enter your phone number" required class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6">
+                    <button type="button" class="btn btn-primary btn-block btn-lg" data-toggle="modal" data-target="#myModal">Submit</button>
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
         </div> 
-	</form>
+         <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <center>
+                            <h1 class="h3 mb-2 font-weight-normal"><b>Confirmation</b></h1>
+                        </center> 
+                    </div>
+                    <div class="modal-body">
+                        <p class="h4 mb-2 font-weight-normal">Download as PDF file?</p> 
+                    </div>
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <center>
+                                    <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal"  style="width: 100px">No</button>
+                                </center>
+                            </div>
+                            <div class="col-sm-6">
+                                <center>
+                                    <input id="redirect" type="submit" class="btn btn-success btn-lg" style="width: 100px" value="Yes">
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 </body>
 </html>

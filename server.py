@@ -308,7 +308,57 @@ def logout():
 	session['user'] = None
 	return redirect(url_for('index'))
 
+@app.route('/admin', methods=["POST","GET"])
+def admin():
+	'''if not session.get('admin'):
+		uname = request.form['uname']
+		passwd = request.form['passwd']
+		if uname == 'admin' and passwd == 'mysupersecret':
+			session['admin'] = True
+			return render_template('adminHome.html')
+		else:
+			return render_template('secondHome.html')
+	else:
+		return render_template('adminHome.html')'''
+	#return render_template('secondHome.html')
+	if not session.get('admin'):
+		if request.method == 'POST':
+			uname = request.form['uname']
+			passwd = request.form['passwd']
+			if uname == 'admin' and passwd == 'super123':
+				session['admin'] = True
+				return redirect(url_for('adminhome'))
+			else:
+				return render_template('secondHome.html')
+		return render_template('secondHome.html')
+	else:
+		return render_template('adminHome.html')
 
+@app.route('/adminhome', methods=["POST","GET"])
+def adminhome():
+	if session.get('admin'):
+		return render_template('adminHome.html')
+	else:
+		return redirect(url_for('admin'))
+
+
+@app.route('/addscheme', methods=["GET","POST"])
+def addscheme():
+	if session.get('admin'):
+		name = request.form['scheme_add']
+		description = request.form['description_add']
+		eligibility = request.form['eligibility_add']
+		category = request.form['category_add']
+		add_scheme(name,description,eligibility,category)
+		return redirect(url_for('adminhome'))
+	else:
+		return redirect(url_for('admin'))
+
+
+@app.route('/adminLogout')
+def adminlogout():
+	session['admin'] = False
+	return redirect(url_for('admin'))
 
 if __name__=='__main__':
 	app.run(debug=True)

@@ -60,3 +60,26 @@ def authuser(username, password):
 		else:
 			return False
 	return False
+
+def add_scheme(name, description, eligibility, category):
+	c,conn = connection()
+	#ins = c.execute("insert into SCHEMES values (%s,%s,%s,%s)",(esc(name),esc(description),esc(eligibility),esc(category)))
+	ins = c.execute("insert into SCHEMES (name, description, eligibility, category) values (%s,%s,%s,%s);",(esc(name),esc(description),esc(eligibility),esc(category)))
+	conn.commit()
+	c.close()
+	ct=c.execute("select password from EMPS where username = '"+username+"'")
+	if ct>0:
+		results = c.fetchall()
+		for row in results:
+			z = row[0]
+		'''if password == passwd:
+			return True
+		else:
+			return False'''
+		if(z == password):
+			return True
+		else:
+			return False
+	return False
+
+

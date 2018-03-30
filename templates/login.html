@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Avoidance of duplication of beneficiaries - Login</title>
+    <title>Avoidance of duplication of beneficiaries - Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -18,29 +18,27 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/login.css') }}">
 </head>
 <body class="container-fluid">
-	<div class="page-header row head">
+    <div class="page-header row head">
      <h1>Avoidance of duplication of beneficiaries</h1>
      </div>
      
      <div class="row">
-     	<div class="col-sm-4">
-     		<img src="/static/img/GujaratEmblem.png">
-     	</div>
-     	<div class="col-sm-3">
+        <div class="col-sm-4">
+            <img src="/static/img/GujaratEmblem.png">
+        </div>
+        <div class="col-sm-3">
             <h3 style="color: red;">{{error}}</h3>
-     		<form class="form-signin" method="post">
-			<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-			<input type="text" id="inputEmail" class="form-control" placeholder="Username" name="username" required autofocus>
-			<input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
-			<div class="checkbox mb-3">
-				<label><input type="checkbox" value="remember-me"> Remember me</label>
-			</div>
-			<button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
-		</form>
-     	</div>
-     	<div class="col-sm-4">
-     		<img src="/static/img/GujaratMap.png">
-     	</div>
+            <form class="form-signin" method="post">
+            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+            <input type="text" id="inputEmail" class="form-control" placeholder="Username" name="username" required autofocus>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+            <br><br>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+        </form>
+        </div>
+        <div class="col-sm-4">
+            <img src="/static/img/GujaratMap.png">
+        </div>
      </div>
 </body>
 </html>

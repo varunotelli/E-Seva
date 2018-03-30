@@ -32,6 +32,25 @@
     </script>
 </head>
 <body class="container-fluid">
+    <script>
+        function checkMobile() {
+            var a= new RegExp("^[0-9]{10}$");
+					if (a.test(document.getElementById('mb_no').value)) {
+                        document.getElementById('err_mb_no').style.visibility="hidden";
+						return true;
+					}
+					else {
+						document.getElementById('err_mb_no').innerHTML="* Invalid Mobile No. *";
+						return false;
+					}
+        }
+
+        function final() {
+            if (checkMobile()) {
+                $('#myModal').modal('show');
+            }
+        }
+    </script>
     <div class="page-header row head">
         <h1>Avoidance of duplication of beneficiaries</h1>
         <form action="\logout">
@@ -175,7 +194,8 @@
                     <div class="form-group">
                         <label class="control-label col-sm-5">Phone Number : </label>
                         <div class="col-sm-7">
-                            <input type="text" name="mobile" value="" type="number" placeholder="Enter your phone number" required class="form-control">
+                            <input type="text" name="mobile" value="" type="number" placeholder="Enter your phone number" required class="form-control" id="mb_no">
+                            <p id="err_mb_no" style="color:red;font-weight: bold;"></p>
                         </div>
                     </div>
                 </div>
@@ -184,7 +204,7 @@
             <div class="row">
                 <div class="col-sm-3"></div>
                 <div class="col-sm-6">
-                    <button type="button" class="btn btn-primary btn-block btn-lg" data-toggle="modal" data-target="#myModal">Submit</button>
+                    <button type="button" class="btn btn-primary btn-block btn-lg" id="submit_id" onclick="final()">Submit</button>
                 </div>
                 <div class="col-sm-3"></div>
             </div>

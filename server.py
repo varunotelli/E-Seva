@@ -156,6 +156,12 @@ def getfile():
 			<h2 align="center"><b>GOVERNMENT OF GUJARAT</b></h2>
 			<br><hr><h2 align="center"><b>AADHAR DETAILS</b></h2><br>
 			<table align="center" border="0" width="70%">
+			<tr>
+					<td width="10%"></td>
+					<td width="40%"><b>Scheme Name : </b></td>
+					<td width="50%" align="right">"""+schemeName+"""</td>
+				</tr>
+				<br>
 				<tr>
 					<td width="10%"></td>
 					<td width="40%"><b>UID : </b></td>

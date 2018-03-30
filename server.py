@@ -406,5 +406,33 @@ def adminlogout():
 	session['admin'] = False
 	return redirect(url_for('admin'))
 
+@app.route('/validation',methods=["POST","GET"])
+def validation():
+	if session.get('validator'):
+		c,conn = connection()
+		ct = c.execute("select * from appn")
+		results = c.fetchall()
+		return render_template('adminApproval.html',results=results)
+	else:
+		return render_template('secondHome.html')
+
+@app.route('/validator', methods=["POST","GET"])
+def validator():
+	if not session.get('validator'):
+		if request.method == 'POST':
+			uname = request.form['uname']
+			passwd = request.form['passwd']
+			if uname == 'validator' and passwd == 'super1234':
+				session['validator'] = True
+				return redirect(url_for('validation'))
+		return render_template('thirdHome.html')
+	else:
+		return render_template('thirdHome.html')
+
+@app.route('/validatorlogout')
+def validatorlogout():
+	session['validator'] = False
+	return redirect(url_for('validator'))
+
 if __name__=='__main__':
 	app.run(debug=True)

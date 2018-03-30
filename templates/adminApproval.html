@@ -20,7 +20,7 @@
   <body class="container-fluid">
     <div class="page-header row head">
       <h1>Avoidance of duplication of beneficiaries - <br><center><b>Administrator</b></center></h1>
-      <form action="\logout">
+      <form action="\validatorlogout">
             <button class="btn btn-danger pull-right logout">Logout</button>    
       </form>
     </div>
@@ -35,21 +35,24 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">UID</th>
-              <th scope="col">Date Submitted</th>
+              <th scope="col">Scheme Applied</th>
               <th scope="col">Mobile Number</th>
               <th scope="col">Valid</th>
               <th scope="col">Invalid</th>
             </tr>
           </thead>
           <tbody>
+            {% if results %}
+            {% for item in results %}
             <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td><input type="radio" name="one"></td>
-              <td><input type="radio" name="one"></td>
+              <td>{{ item[0] }}</td>
+              <td>{{ item[1] }}</td>
+              <td>{{ item[10] }}</td>
+              <td>{{ item[11] }}</td>
+              <td colspan="2"><input type="radio" name="one" style="margin-right: 20px"><input type="radio" name="one"></td>
             </tr>
+            {% endfor %}
+            {% endif %}
           </tbody>
         </table>
       </div>

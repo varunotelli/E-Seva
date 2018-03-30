@@ -5,7 +5,7 @@ from fpdf import FPDF,HTMLMixin
 import os
 from json import dump
 import xml.etree.ElementTree as ET
-from db_checker import check, authuser
+from db_checker import check, authuser,add_scheme
 from dbconnector import connection
 from sms import send
 visible="readonly"

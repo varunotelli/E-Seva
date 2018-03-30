@@ -4,6 +4,13 @@
   justify-content: center;
 
 }
+.logout
+{
+  margin-top: -20px; 
+  margin-right: -240px;
+  padding-left: 40px;
+  padding-right:40px
+}
 img
 {
   height: 475px;

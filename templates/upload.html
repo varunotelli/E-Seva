@@ -40,17 +40,11 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/upload.css') }}">
 </head>
 <body class="container-fluid">
-    <div class="row">
-        <div class="col-sm-8"></div>
-        <div class="col-sm-4">
-            <form action="\logout">
-            <button class="btn btn-primary">Logout</button>    
-            </form>
-            
-        </div>
-    </div>
     <div class="page-header row head">
         <h1>Avoidance of duplication of beneficiaries</h1>
+        <form action="\logout">
+            <button class="btn btn-danger pull-right logout">Logout</button>    
+        </form>
      </div>
     <div class="row">
         <div class="col-sm-4">

@@ -355,7 +355,7 @@ def addscheme():
 		return redirect(url_for('admin'))
 
 
-@app.route('/adminLogout')
+@app.route('/adminlogout')
 def adminlogout():
 	session['admin'] = False
 	return redirect(url_for('admin'))

@@ -1,59 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>Admin Sign In</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-		<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/adminApproval.css') }}">
-	</head>
-	<body>
+  <head>
+    <title>Admin Sign In</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
-    <div class="signout-btn-box">
-      <button type="submit" class="btn btn-danger">Sign out</button>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/adminApproval.css') }}">
+  </head>
+  <body class="container-fluid">
+    <div class="page-header row head">
+      <h1>Avoidance of duplication of beneficiaries - <br><center><b>Administrator</b></center></h1>
+      <form action="\logout">
+            <button class="btn btn-danger pull-right logout">Logout</button>    
+      </form>
     </div>
+    <br><br>
 
-		<table class="table table-striped table-bordered my-table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">UID</th>
-          <th scope="col">Date Submitted</th>
-          <th scope="col">Mobile Number</th>
-          <th scope="col">Valid</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td class="my-checkbox-cell"><input type="checkbox"></td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-          <td class="my-checkbox-cell"><input type="checkbox"></td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-          <td class="my-checkbox-cell"><input type="checkbox"></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="approve-btn-box">
-      <button type="submit" class="btn btn-primary btn-lg">Approve</button>
+    <form>
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+          <table class="table">
+            <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">UID</th>
+              <th scope="col">Date Submitted</th>
+              <th scope="col">Mobile Number</th>
+              <th scope="col">Valid</th>
+              <th scope="col">Invalid</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td><input type="radio" name="one"></td>
+              <td><input type="radio" name="one"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-sm-1"></div>
     </div>
-
-	</body>
+    <br><br>
+    <div class="row">
+      <center>
+        <input type="submit" class="btn btn-primary submit" value="Submit"></button>
+      </center>
+    </div>
+    </form>
+  </body>
 </html>

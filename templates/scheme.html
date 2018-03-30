@@ -47,6 +47,7 @@
                         data: {'name':element},
                         success : function(response) {
                             $('#scheme-name').html(element);
+                            $('#scheme-elig-header').html("Eligibility Criteria");
                             var arr1 = response.desc;
                             $('#scheme-desc').html(arr1);
                             var arr2 = response.elig;
@@ -85,18 +86,22 @@
         <div class="col-sm-4">
             <div class="desc">
                 <center>
-                    <h1 id="scheme-name" class="h3 mb-3 font-weight-normal">Scheme Description</h1>
+                    <h1  class="h3 mb-3 font-weight-normal">Scheme Description</h1>
                 </center>
                 <hr>
-                <div id="scheme-desc" class="divdesc"></div>
+                <div class="divdesc">
+                    <center>
+                        <h1 id="scheme-name" class="h3 mb-3 font-weight-normal"></h1>
+                    </center>
+                    <div id="scheme-desc" ></div>
+                    <center>
+                        <h1 id="scheme-elig-header" class="h3 mb-3 font-weight-normal"></h1>
+                    </center>
+                    <div id="scheme-elig"></div>
+                </div>
+                
             </div>
-            <div class="desc">
-                <center>
-                    <h1 class="h3 mb-3 font-weight-normal">Eligibility Criteria</h1>
-                </center>
-                <hr>
-                <div id="scheme-elig" class="divelig"></div>
-            </div>
+            
         </div>
         
      </div>

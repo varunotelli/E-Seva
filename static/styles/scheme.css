@@ -29,19 +29,13 @@ img
     border-radius: 8px;
     border: 1px solid #D3D3D3;
     padding: 10px;
-    margin: 5px;
-    height: 225px;
+    margin: 10px;
+    height: 450px;
     background-color: white;
 }
 
 .divdesc
 {
   overflow-y: scroll;
-  height: 115px;
-}
-
-.divelig
-{
-  overflow-y: scroll;
-  height: 115px;
+  height: 330px;
 }

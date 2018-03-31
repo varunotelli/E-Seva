@@ -8,6 +8,7 @@ import xml.etree.ElementTree as ET
 from db_checker import check, authuser,add_scheme,update_scheme,delete_scheme,insert_appn
 from dbconnector import connection
 from sms import send
+from MySQLdb import escape_string as esc
 visible="readonly"
 error=''
 flag=False
@@ -433,6 +434,45 @@ def validator():
 def validatorlogout():
 	session['validator'] = False
 	return redirect(url_for('validator'))
+
+@app.route('/checkValid',methods=["GET","POST"])
+def checkValid():
+	if request.method == 'POST':
+		c,conn=connection()
+		c.execute("select * from appn")
+		results = c.fetchall()
+		for rows in results:
+			valid = request.form[str(rows[0])]
+			print(valid)
+			if valid=="Valid":
+				print("True")
+				c2,conn2 = connection()
+				ct=c2.execute("select * from USER where id="+str(rows[1]))
+				userResults=c2.fetchall()
+				for row in userResults:
+					pres_scheme=row[10]
+					pres_scheme=pres_scheme+","+rows[11]
+				if(ct>0):
+					c2.execute("update user set schemes_applied=%s WHERE id=%s",(pres_scheme,rows[1]))
+					conn2.commit()
+					c2.close()
+				else:
+					c3,conn3=connection()
+					c3.execute("insert into USER (id,id_type,name,gender,year_of_birth,father_or_spouse_name,address,pincode,income,schemes_applied) values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);",(esc(rows[1]),esc(str(rows[2])),esc(rows[3]),esc(str(rows[4])),esc(str(rows[5])),esc(rows[6]),esc(rows[7]),esc(str(rows[8])),esc(str(rows[9])),esc(rows[11])))
+					conn3.commit()
+					c3.close()
+
+				c1,conn1 = connection()
+				c1.execute("DELETE FROM APPN WHERE appn_id="+str(rows[0]))
+				conn1.commit()
+				c1.close()
+			else:
+				print("False")
+				c1,conn1 = connection()
+				c1.execute("DELETE FROM APPN WHERE appn_id="+str(rows[0]))
+				conn1.commit()
+				c1.close()
+		return redirect(url_for('validation'))
 
 if __name__=='__main__':
 	app.run(debug=True)

@@ -428,7 +428,7 @@ def validator():
 				return redirect(url_for('validation'))
 		return render_template('thirdHome.html')
 	else:
-		return return redirect(url_for('validation'))
+		return redirect(url_for('validation'))
 
 @app.route('/validatorlogout')
 def validatorlogout():

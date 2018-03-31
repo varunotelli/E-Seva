@@ -45,14 +45,12 @@
             {% if results %}
             {% for item in results %}
             <tr>
-              <td>{{ item[0] }}</td>
-              <td>{{ item[1] }}</td>
-              <td>{{ item[10] }}</td>
-              <td>{{ item[11] }}</td>
-              <td colspan="2">
-                  <input type="radio" name="{{ item[0] }}" value="Valid">
-                  <input type="radio" name="{{ item[0] }}" value="Invalid">
-              </td>
+              <td scope="col">{{ item[0] }}</td>
+              <td scope="col">{{ item[1] }}</td>
+              <td scope="col">{{ item[11] }}</td>
+              <td scope="col">{{ item[10] }}</td>
+              <td scope="col"><input type="radio" name="{{ item[0] }}" value="Valid"></td>
+              <td scope="col"><input type="radio" name="{{ item[0] }}" value="Invalid"></td>
             </tr>
             {% endfor %}
             {% endif %}
